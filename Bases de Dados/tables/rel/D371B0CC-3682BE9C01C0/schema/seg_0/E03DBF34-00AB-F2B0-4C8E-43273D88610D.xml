@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="UPSKILL_BD_TURMA2_16" directorySegmentName="seg_0" id="E03DBF34-00AB-F2B0-4C8E-43273D88610D">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<importedID>0E892548-801C-CF6C-FF2E-8C00CD1499B5</importedID>
+</SchemaObject>

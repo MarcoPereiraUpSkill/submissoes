@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableSpaceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableSpaceOraclev10g" name="USERS" directorySegmentName="seg_0" id="3F252E0C-EEFB-6402-9F85-0277D1FAF4B1">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>USERS</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<dsInitialExtent>65536</dsInitialExtent>
+<dsMaxExtents>2147483645</dsMaxExtents>
+<emUniformSize>0</emUniformSize>
+<extentManagement>LOCAL</extentManagement>
+<minExtLen>65536</minExtLen>
+<dsCompression>NOCOMPRESS</dsCompression>
+<encrypt>NO</encrypt>
+<fileType>SMALLFILE</fileType>
+<inMemory>NO</inMemory>
+</TableSpaceOraclev10g>

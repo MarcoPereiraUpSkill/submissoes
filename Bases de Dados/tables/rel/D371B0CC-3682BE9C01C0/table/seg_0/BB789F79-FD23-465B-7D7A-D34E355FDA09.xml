@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BB789F79-FD23-465B-7D7A-D34E355FDA09" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="COMPETICAO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>COMPETICAO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="74BA7146-C63C-4AAE-6B8D-58DFEF39A6C3">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>COMPETICAO</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA" id="E0A83C16-4A39-A5FD-64D3-A6A7B3E19265">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>COMPETICAO</sourceObjSchema>
+<sourceObjName>DATA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="0C6F24E4-9139-B64A-A778-003F251B3EEC">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>COMPETICAO</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_ATIVIDADE" id="231AB0F0-6107-D65B-A547-F12DDE847BD8">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>COMPETICAO</sourceObjSchema>
+<sourceObjName>ID_ATIVIDADE</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CAF41C09-B358-CD83-3F78-8B0FCD1EFC7A" referredColumn="B331CE68-5420-2804-DABF-B6A93C861509"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75B2A394-5157-2094-46BE-89D47B802EA9" name="PK_COMPETICAO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_COMPETICAO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74BA7146-C63C-4AAE-6B8D-58DFEF39A6C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="12D4E07C-C1D3-1543-DF34-6817832B6309" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_COMPETICAO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_COMPETICAO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74BA7146-C63C-4AAE-6B8D-58DFEF39A6C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD060986-A313-DA89-C797-51AB2C8F3675" name="FK_COMPETICAO_ATIVIDADE">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="231AB0F0-6107-D65B-A547-F12DDE847BD8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

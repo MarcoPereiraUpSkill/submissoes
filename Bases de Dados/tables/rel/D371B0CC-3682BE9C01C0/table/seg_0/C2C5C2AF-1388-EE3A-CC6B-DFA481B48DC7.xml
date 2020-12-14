@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C2C5C2AF-1388-EE3A-CC6B-DFA481B48DC7" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="GENERO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="GENERO" id="0D40BEC8-110D-BE95-D9CD-D67401D3D1A0">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>GENERO</sourceObjSchema>
+<sourceObjName>GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<constraintName>CK_GENERO_GENERO</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="upper(genero) in (&apos;F&apos;, &apos;M&apos;)"/>
+<implementationDef dbType="Oracle Database 12cR2" definition="upper(genero) in (&apos;F&apos;, &apos;M&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B952EB76-234E-988A-ED3C-8E21701C2B9F" name="PK_GENERO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D40BEC8-110D-BE95-D9CD-D67401D3D1A0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9FAF5FBE-2B67-9CBF-8CD9-6971E8FD9091" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_GENERO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D40BEC8-110D-BE95-D9CD-D67401D3D1A0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

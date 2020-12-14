@@ -1,0 +1,160 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AAE540CD-8EFF-7FD1-2BEB-15A0ECF461F8" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="ATLETA">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>ATLETA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NOME" id="DC711382-E630-86C3-E89B-99CD807E4925">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="AB4A111F-89C2-89DB-DFA8-2E90EAE6D499">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NIC" id="F3C711A1-164C-DAA0-CB6B-DEC0575354FC">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>NIC</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GENERO" id="B8AFA153-524E-8853-FAE7-823B17427DA6">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B227B913-7A80-C6FF-6B1A-F62B3CEDA45F" referredColumn="0D40BEC8-110D-BE95-D9CD-D67401D3D1A0"/>
+</associations>
+</Column>
+<Column name="DATA_NASCIMENTO" id="BF0A5A79-D205-1A23-10CE-B263D81B8D16">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>DATA_NASCIMENTO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIPO_ATLETA" id="C5F3A85B-C512-BB0A-DF4C-D56AD2DBC00E">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATLETA</sourceObjSchema>
+<sourceObjName>TIPO_ATLETA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D8C9150-DC24-A641-2787-E1349F55770D" referredColumn="3D614DD8-7879-77BF-1F80-6EA6C3C19286"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B8D54063-42B3-EC00-CF22-B405BCE8920F" name="PK_ATLETA">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_ATLETA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3C711A1-164C-DAA0-CB6B-DEC0575354FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FA779115-DB1A-9CC7-BFDC-B9225FEED65B" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_ATLETA">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_ATLETA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3C711A1-164C-DAA0-CB6B-DEC0575354FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CC8DAEB8-7279-8219-50E1-C6992A7A20FA" name="FK_ATLETA_TIPOATLETA">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:53:21 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5F3A85B-C512-BB0A-DF4C-D56AD2DBC00E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B6773358-EAAC-C707-1872-ABCE08B8CD51" name="FK_ATLETA_GENERO">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 15:20:54 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B8AFA153-524E-8853-FAE7-823B17427DA6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

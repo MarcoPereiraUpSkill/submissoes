@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0D375B77-99CB-5EBC-D5A8-DAE0087C7E83" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="ATIVIDADE">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>ATIVIDADE</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B331CE68-5420-2804-DABF-B6A93C861509">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATIVIDADE</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="66A24021-7297-F646-EA50-7F864251116D">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>ATIVIDADE</sourceObjSchema>
+<sourceObjName>NOME</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ED71DD4A-4371-2BB9-F71A-E3D4328CADF2" name="PK_ATIVIDADE">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_ATIVIDADE</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B331CE68-5420-2804-DABF-B6A93C861509"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="827E8DB5-7B06-ADCB-EC21-DFBCA7F235A5" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_ATIVIDADE">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_ATIVIDADE</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B331CE68-5420-2804-DABF-B6A93C861509"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

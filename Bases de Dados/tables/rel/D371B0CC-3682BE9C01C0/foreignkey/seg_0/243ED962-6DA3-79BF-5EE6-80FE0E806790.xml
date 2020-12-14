@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="243ED962-6DA3-79BF-5EE6-80FE0E806790" containerWithKeyObject="EEFA519E-9B29-0F18-6767-BBCE86F630B7" localFKIndex="83C96D0C-CDDF-410E-EA98-1031F2D03744" name="FK_FCM_ATIVIDADE">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>FK_FCM_ATIVIDADE</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<referredTableLongName>UPSKILL_BD_TURMA2_16.ATIVIDADE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>0D375B77-99CB-5EBC-D5A8-DAE0087C7E83</referredTableID>
+<keyObject>ED71DD4A-4371-2BB9-F71A-E3D4328CADF2</keyObject>
+<referredKeyID>ED71DD4A-4371-2BB9-F71A-E3D4328CADF2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

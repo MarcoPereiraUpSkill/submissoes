@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PROFISSIONAL" directorySegmentName="seg_0" id="B1293310-547C-ED0F-92A9-B02DC894367B">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<schemaObject>E03DBF34-00AB-F2B0-4C8E-43273D88610D</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>580E01D3-8600-DA39-D1B2-F6F278155B16</segment>
+<tableSpace>3F252E0C-EEFB-6402-9F85-0277D1FAF4B1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PARCELA_FICA" id="326BFFA1-0945-B8D4-7CAE-C048F5022580">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PROFISSIONAL_NIC" id="AE756173-2F44-3BD2-DBCB-A5E6E1F548A5">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_PROFISSIONAL" id="4108F660-B9AA-52F8-056D-A6FB2191A6D9">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<schemaObject>E03DBF34-00AB-F2B0-4C8E-43273D88610D</schemaObject>
+<segment>3F068EAA-E257-2D29-E76A-61826EC57EE7</segment>
+<tableSpace>3F252E0C-EEFB-6402-9F85-0277D1FAF4B1</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PROFISSIONAL_ATLETA" id="0E9B696F-115F-7EB0-6402-22EB233417D4">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_PROFISSIONAL" id="45EEE05D-F23E-89B3-A426-07EED12B14A2">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<segment>3F068EAA-E257-2D29-E76A-61826EC57EE7</segment>
+<tableSpace>3F252E0C-EEFB-6402-9F85-0277D1FAF4B1</tableSpace>
+<existingIndex>4108F660-B9AA-52F8-056D-A6FB2191A6D9</existingIndex>
+<indexSegment>3F068EAA-E257-2D29-E76A-61826EC57EE7</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

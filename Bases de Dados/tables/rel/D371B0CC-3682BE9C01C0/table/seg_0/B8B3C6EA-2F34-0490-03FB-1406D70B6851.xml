@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B8B3C6EA-2F34-0490-03FB-1406D70B6851" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="SEMIPROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>SEMIPROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SEMIPROFISSIONAL_NIC" id="CF889129-9C53-6D38-ECF8-8716BC11AFFE">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>SEMIPROFISSIONAL</sourceObjSchema>
+<sourceObjName>SEMIPROFISSIONAL_NIC</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="35633EF3-5AE8-3859-9BCF-DDD3211BAC4C" referredColumn="F3C711A1-164C-DAA0-CB6B-DEC0575354FC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="503435EF-C8EA-D3BB-628C-1DF646EF8BA1" name="PK_SEMIPROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_SEMIPROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CF889129-9C53-6D38-ECF8-8716BC11AFFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FBD573F8-8426-566A-C42E-636048FF490D" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_SEMIPROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_SEMIPROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CF889129-9C53-6D38-ECF8-8716BC11AFFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C3992935-ED86-0D12-85B1-AECC2D0FD868" name="FK_SEMIPROFISSIONAL_ATLETA">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CF889129-9C53-6D38-ECF8-8716BC11AFFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

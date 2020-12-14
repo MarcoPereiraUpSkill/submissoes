@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9C575591-9234-F7E0-443E-9AB5FE947B69" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="AMADOR">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>AMADOR</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AMADOR_NIC" id="59E0B060-B8A2-0C39-C424-DD4D57F04FFB">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>AMADOR</sourceObjSchema>
+<sourceObjName>AMADOR_NIC</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DC09124A-7EE9-57CF-6C46-DAFE9572015C" referredColumn="F3C711A1-164C-DAA0-CB6B-DEC0575354FC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4890F486-A47A-DCE6-8F0A-C9C73A1C9A2F" name="PK_AMADOR">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_AMADOR</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59E0B060-B8A2-0C39-C424-DD4D57F04FFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BF31BD3E-7333-DCBC-8AD3-74D2159FC4D6" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_AMADOR">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_AMADOR</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:53 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59E0B060-B8A2-0C39-C424-DD4D57F04FFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3E13BECD-684E-9DC2-E07A-1B068C1361F3" name="FK_AMADOR_ATLETA">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59E0B060-B8A2-0C39-C424-DD4D57F04FFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

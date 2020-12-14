@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="D371B0CC-5FE7-0BFE-41C2-3682BE9C01C0" mainViewID="54C9E870-D317-4F18-C2F4-CF938E42E99F">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:13 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>79C73AAF-E1A7-E669-7DF0-025EE81A2AFC</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>upskill_bd</connName>
+<connUser>UPSKILL_BD_Turma2_16</connUser>
+<connType>1</connType>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B1293310-547C-ED0F-92A9-B02DC894367B" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:48 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PROFISSIONAL_NIC" id="AE756173-2F44-3BD2-DBCB-A5E6E1F548A5">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>PROFISSIONAL</sourceObjSchema>
+<sourceObjName>PROFISSIONAL_NIC</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="64DDCD34-4AA3-D4D5-903D-6273323F80CC" referredColumn="F3C711A1-164C-DAA0-CB6B-DEC0575354FC"/>
+</associations>
+</Column>
+<Column name="PARCELA_FICA" id="326BFFA1-0945-B8D4-7CAE-C048F5022580">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>PROFISSIONAL</sourceObjSchema>
+<sourceObjName>PARCELA_FICA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:49 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="45EEE05D-F23E-89B3-A426-07EED12B14A2" name="PK_PROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_PROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:06 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE756173-2F44-3BD2-DBCB-A5E6E1F548A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4108F660-B9AA-52F8-056D-A6FB2191A6D9" schemaObject="E03DBF34-00AB-F2B0-4C8E-43273D88610D" name="PK_PROFISSIONAL">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>PK_PROFISSIONAL</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:48:57 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE756173-2F44-3BD2-DBCB-A5E6E1F548A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0E9B696F-115F-7EB0-6402-22EB233417D4" name="FK_PROFISSIONAL_ATLETA">
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE756173-2F44-3BD2-DBCB-A5E6E1F548A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

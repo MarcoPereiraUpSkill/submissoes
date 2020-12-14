@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="ECB67C2D-36F0-E534-8B16-8F9E7B1E6C77" containerWithKeyObject="89CF9387-46CF-277B-6C3A-41D952189480" localFKIndex="4C3AAEB3-AEF2-1214-27B4-ECCE2A732DC8" name="FK_PARTICIPA_ATLETA">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>FK_PARTICIPA_ATLETA</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 11:49:12 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<referredTableLongName>UPSKILL_BD_TURMA2_16.ATLETA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AAE540CD-8EFF-7FD1-2BEB-15A0ECF461F8</referredTableID>
+<keyObject>B8D54063-42B3-EC00-CF22-B405BCE8920F</keyObject>
+<referredKeyID>B8D54063-42B3-EC00-CF22-B405BCE8920F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>NIC</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

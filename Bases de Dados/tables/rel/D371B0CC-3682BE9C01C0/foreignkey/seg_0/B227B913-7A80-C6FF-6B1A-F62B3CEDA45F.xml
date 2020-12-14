@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B227B913-7A80-C6FF-6B1A-F62B3CEDA45F" containerWithKeyObject="AAE540CD-8EFF-7FD1-2BEB-15A0ECF461F8" localFKIndex="B6773358-EAAC-C707-1872-ABCE08B8CD51" name="FK_ATLETA_GENERO">
+<sourceConnName>upskill_bd</sourceConnName>
+<sourceObjSchema>UPSKILL_BD_TURMA2_16</sourceObjSchema>
+<sourceObjName>FK_ATLETA_GENERO</sourceObjName>
+<createdBy>marco</createdBy>
+<createdTime>2020-12-14 15:20:54 UTC</createdTime>
+<ownerDesignName>tables</ownerDesignName>
+<importedID>3396C0EB-5C22-371E-2E20-C05B3FA3D82D</importedID>
+<referredTableLongName>UPSKILL_BD_TURMA2_16.GENERO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C2C5C2AF-1388-EE3A-CC6B-DFA481B48DC7</referredTableID>
+<keyObject>B952EB76-234E-988A-ED3C-8E21701C2B9F</keyObject>
+<referredKeyID>B952EB76-234E-988A-ED3C-8E21701C2B9F</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>GENERO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
