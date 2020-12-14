@@ -1,13 +1,29 @@
--- drop table TipoAmador;
--- drop table TipoSemiProfissional;
--- drop table TipoProfissional;
--- drop table TipoAtleta;
-drop table Atleta;
--- drop table Atividade;
-drop table Competicao;
--- drop table Genero;
+drop table SemiProfissional;
+drop table Profissional;
+drop table Amador;
+drop table FCM;
+drop table FormulaFCM;
 drop table Premio;
 drop table Participa;
+drop table Competicao;
+drop table Atividade;
+drop table TipoProfissional;
+drop table TipoSemiProfissional;
+drop table TipoAmador;
+drop table Atleta;
+drop table Genero;
+drop table TipoAtleta;
+
+create table TipoAtleta(
+    tipo int,
+        constraint pk_TipoAtleta primary key(tipo),
+    nome varchar(20));
+    
+create table Genero (
+    genero varchar(1) 
+        constraint pk_Genero primary key 
+        constraint ck_Genero_genero 
+        check (upper(genero) in ('F', 'M')));
 
 create table Atleta(
     nome varchar(50),
@@ -15,13 +31,10 @@ create table Atleta(
     nic varchar(15),
         constraint pk_Atleta primary key(nic),
     genero varchar(1),
+        constraint fk_Atleta_Genero foreign key (genero) references Genero(genero),
     data_nascimento date,
-    tipo_atleta int);
-        
-create table TipoAtleta(
-    tipo int,
-        constraint pk_TipoAtleta primary key(tipo),
-    nome varchar(20));
+    tipo_atleta int,
+        constraint fk_Atleta_TipoAtleta foreign key (tipo_atleta) references TipoAtleta(tipo));
     
 create table TipoAmador(
     tipo int constraint pk_TipoAmador primary key,
@@ -39,19 +52,13 @@ create table TipoProfissional(
         constraint pk_TipoProfissional primary key
         constraint fk_TipoProfissional references TipoAtleta(tipo),
     pct_variavel number(5, 2));
-    
-create table Genero (
-    genero varchar(1) 
-        constraint pk_Genero primary key 
-        constraint ck_Genero_genero 
-        check (upper(genero) in ('F', 'M')));
 
-create table atividade(
+create table Atividade(
     id int 
         constraint pk_atividade primary key, 
     nome varchar(50));
     
-create table competicao(
+create table Competicao(
     id int,
         constraint pk_competicao primary key(id),
     data date, 
