@@ -1,0 +1,22 @@
+ED: 
+  num, dig, contador, digAnterior INTEIRO
+ALG
+INICIO
+  REPETE
+    LER(num)
+  ENQUANTO(num < 0)
+  contador <-- 1
+  digAnterior <-- 0
+  REPETE
+    dig <-- num MOD 10
+    SE(dig < digAnterior) ENTAO
+      contador <-- contador + 1
+    SENAO
+      contador <-- 0
+    FIMSE
+    digAnterior <-- dig 
+    num <-- num DIV 10
+  ENQUANTO(num DIV 10 <> 0)
+  ESCREVER(contador)
+FIM
+     

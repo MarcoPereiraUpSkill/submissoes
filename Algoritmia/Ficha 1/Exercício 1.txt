@@ -1,0 +1,7 @@
+ED: 
+  a, b, c, d, e, media INTEIRO
+INICIO
+  LER(a, b, c, d, e)
+  media <-- (a + b + c + d + e) / 5
+  ESCREVER("distância média: ", media * 1.609)
+FIM

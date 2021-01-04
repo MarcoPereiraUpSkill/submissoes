@@ -1,0 +1,15 @@
+ED:
+  criancaUm, criancaDois, numCentUm, numCentDois REAL
+  contador INTEIRO
+INICIO
+  contador <-- 0
+  REPETE
+    LER(criancaUm, criancaDois, numCentUm, numCentDois)
+  ENQUANTO(criancaUm > criancaDois)
+  ENQUANTO(criancaUm < criancaDois)
+    contador <-- contador + 1
+    criancaUm <-- criancaUm + numCentUm
+    criancaDois <-- criancaDois + numCentDois
+  FIMENQUANTO
+  ESCREVER("a criança mais baixa demora ", contador, " anos a alcançar a mais alta")
+   

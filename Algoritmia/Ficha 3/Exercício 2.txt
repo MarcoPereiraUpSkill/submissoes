@@ -1,0 +1,14 @@
+ED:
+  x INTEIRO
+  montInicial, taxaJuro, montFinal REAL
+INICIO
+  montFinal <-- montInicial
+  REPETE
+    LER(montInicial)
+  ENQUANTO(montInicial <= 0)
+  PARA x <-- 1 ATÉ 12
+    LER(taxaJuro)
+    montFinal <-- montFinal + (montFinal * taxaJuro / 100)
+  FIMPARA
+  ESCREVER(montFinal)
+FIM

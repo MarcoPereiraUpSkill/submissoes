@@ -1,0 +1,15 @@
+ED:
+  inicioInt, fimInt, i INTEIRO
+INICIO
+  inicioInt <-- 0
+  fimInt <-- 0
+  ENQUANTO(inicioInt >= fimInt)
+    LER(inicioInt, fimInt)
+  FIMENQUANTO
+  PARA i <-- inicioInt ATÉ fimInt - 1
+    SE(i MOD 3 = 0 E i MOD 2 = 0) ENTAO
+      ESCREVER(i)
+    FIMSE
+  FIMPARA
+FIM
+      

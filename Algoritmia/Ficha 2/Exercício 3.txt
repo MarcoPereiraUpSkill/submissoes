@@ -1,0 +1,27 @@
+ED: 
+  somaNum, num, menorNum, max INTEIRO
+  firstTime BOOLEANO
+ALG
+INICIO
+  somaNum <-- 0
+  firstTime <-- VERDADEIRO
+  LER(max)
+  LER(num)
+  ENQUANTO(somaNum < max)
+    SE(firstTime = VERDADEIRO) ENTAO
+      menorNum = num
+      firstTime <-- FALSO
+    SENAO
+      SE(num < menorNum) ENTAO
+        menorNum <-- num
+      FIMSE
+    FIMSE
+    somaNum <-- somaNum + num  
+    REPETE
+      LER(num)
+    ENQUANTO(num < 0)
+  FIMENQUANTO
+  ESCREVER(menorNum)
+FIM
+    
+  

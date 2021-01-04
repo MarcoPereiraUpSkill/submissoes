@@ -1,0 +1,12 @@
+ED:
+  num, x INTEIRO
+INICIO
+  REPETE
+   LER(num)
+  ENQUANTO(num MOD 2 <> 0 OU num < 1000 OU num > 9999 OU num < 0)
+  PARA x <-- 0 ATÉ num
+     SE(num MOD 7 = 0) ENTAO
+       ESCREVER(num)
+     FIMSE
+  FIMPARA
+FIM

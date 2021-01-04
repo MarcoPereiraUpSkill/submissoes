@@ -1,0 +1,6 @@
+ED: 
+  xa, ya, xb, yb, distancia INTEIRO
+INICIO
+  distancia <-- ((xb - xa)^2 + (yb - ya)^2) ^ 0.5
+  ESCREVER("distância: ", distancia)
+FIM

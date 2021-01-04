@@ -1,0 +1,19 @@
+ED:
+  salarioBase, numHoras, numFunc, i INTEIRO
+  salarioMensal, salarioBase, somaSalarios REAL
+ALG
+INICIO
+  somaSalarios <-- 0 
+  PARA i <-- 0 ATÉ numFunc
+    REPETE
+      LER(salarioBase)
+    ENQUANTO(salarioBase < 0)
+    REPETE
+      LER(numHoras)
+    ENQUANTO(numHoras < 0)
+    salarioMensal <-- salarioBase + (numHoras * (salarioBase * 0.02))
+    somaSalarios <-- somaSalarios + salarioMensal
+    ESCREVER(salarioMensal)
+  FIMPARA
+  ESCREVER(somaSalarios / numFunc)
+FIM

@@ -1,0 +1,14 @@
+ED:
+  X, Y INTEIRO
+INICIO
+  LER(X,Y)
+  SE(X MOD Y = 0) ENTAO
+    ESCREVER(X, " é múltiplo de ", Y)
+  SENAO
+    SE(Y MOD X = 0) ENTAO
+      ESCREVER(Y, " é múltiplo de ", X)
+    SENAO
+      ESCREVER(X, " não é múltiplo nem divisor de ", Y)
+    FIMSE
+  FIMSE
+FIM

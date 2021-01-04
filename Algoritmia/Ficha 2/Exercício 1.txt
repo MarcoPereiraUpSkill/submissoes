@@ -1,0 +1,20 @@
+ED:
+  num, qtdPares, somaImpares, contador INTEIRO
+INICIO
+  qtdPares <-- 0
+  somaImpares <-- 0
+  contador <-- 0
+  LER(num)
+  ENQUANTO(num > 0)
+    SE(num MOD 2 = 0) ENTAO
+      qtdPares = qtdPares + 1
+    SENAO
+      somaImpares = somaImpares + num
+    FIMSE
+    contador = contador + 1
+    LER(num)
+  FIMENQUANTO
+  ESCREVER(qtdPares / contador * 100)
+  ESCREVER(somaImpares / (contador - qtdPares)
+FIM
+      

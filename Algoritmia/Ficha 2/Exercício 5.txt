@@ -1,0 +1,22 @@
+ED:
+  max, num, prodAcumulado, maiorNum INTEIRO
+INICIO
+  maiorNum <-- 0
+  REPETE
+    LER(num)
+    prodAcumulado <-- num 
+  ENQUANTO(num < 0)
+  REPETE
+    LER(max)
+  ENQUANTO(max < 0)
+  ENQUANTO(prodAcumulado < max)
+    SE(num > maiorNum)
+      maiorNum = num
+    FIMSE
+    prodAcumulado <-- prodAcumulado * num
+    REPETE
+      LER(num)
+    ENQUANTO(num < 0)
+  FIMENQUANTO
+  ESCREVER(maiorNum)
+FIM

@@ -1,0 +1,60 @@
+ED:
+  mes, dia, diasRestantes, ano, fev INTEIRO
+INICIO
+  LER(mes, dia, ano)
+  SE (ano MOD 400 = 0 OU (ano MOD 4 = 0 E ano MOD 100 <> 0)) ENTAO
+    fev <-- 29
+  SENAO
+    fev <-- 28
+  FIMSE
+  SE(mes = 1) ENTAO
+    diasRestantes <-- 366 - dia
+  SENAO
+    SE(mes = 2) ENTAO
+      diasRestantes <-- 366 - (31 + dia)
+    SENAO
+      SE(mes = 3) ENTAO
+        diasRestantes <-- 366 - (31 + fev + dia)
+      SENAO
+        SE(mes = 4) ENTAO
+          diasRestantes <-- 366 - (31 + fev + 31 + dia)
+        SENAO
+          SE(mes = 5) ENTAO
+            diasRestantes <-- 366 - (31 + fev + 31 + 30 + dia)
+          SENAO
+            SE(mes = 6) ENTAO
+              diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + dia)
+            SENAO
+              SE(mes = 7) ENTAO
+                diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + dia)
+              SENAO
+                SE(mes = 8) ENTAO
+                  diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + 31 + dia)
+                SENAO
+                  SE(mes = 9) ENTAO
+                    diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + 31 + 31 + dia)
+                  SENAO
+                    SE(mes = 10) ENTAO
+                      diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + 31 + 31 + 30 + dia)
+                    SENAO
+                      SE(mes = 11) ENTAO
+                        diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + dia)
+                      SENAO
+                        SE(mes = 12) ENTAO
+                          diasRestantes <-- 366 - (31 + fev + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + dia)
+                        FIMSE
+                      FIMSE
+                    FIMSE
+                  FIMSE
+                FIMSE
+              FIMSE
+            FIMSE
+          FIMSE
+        FIMSE
+      FIMSE
+    FIMSE
+  FIMSE
+  ESCREVER("faltam ", diasRestantes, " para o final do ano)
+FIM
+
+  

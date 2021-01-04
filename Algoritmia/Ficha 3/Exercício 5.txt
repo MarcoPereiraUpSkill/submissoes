@@ -1,0 +1,17 @@
+ED:
+  num, x, y INTEIRO
+INICIO
+  REPETE
+    LER(num)
+  ENQUANTO(num < 2 OU num > 20)
+  PARA x <-- 1 ATÉ num
+    PARA y <-- 1 ATÉ x
+      ESCREVER(y)
+    FIMPARA
+  FIMPARA
+  PARA x <-- num ATÉ 0 PASSO -1
+    PARA y <-- 1 ATÉ x
+      ESCREVER(y)
+    FIMPARA
+  FIMPARA
+FIM

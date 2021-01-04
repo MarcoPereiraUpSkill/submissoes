@@ -1,0 +1,16 @@
+ED: 
+  x, INTEIRO
+INICIO
+  LER(x)
+  SE(x < 0) ENTAO
+    ESCREVER(x)
+  SENAO
+    SE(x = 0) ENTAO
+      ESCREVER(0)
+    SENAO
+      SE(x > 0) ENTAO
+        ESCREVER(x^2 - 2x)
+      FIMSE
+    FIMSE
+  FIMSE
+FIM
