@@ -1,8 +1,9 @@
 
 package com.mycompany.ex_empregado;
 
-import com.mycompany.biblioteca.Data;
-import com.mycompany.biblioteca.Tempo;
+import com.mycompany.utilitarios.Data;
+import com.mycompany.utilitarios.Tempo;
+
 
 public class Empregado {
     private String primeiroNome;
