@@ -34,6 +34,13 @@ public class Filme {
         this.categoria = categoria;
     }
     
+    public Filme(String titulo, int anoRealizacao, Realizador realizador) {
+        this.titulo = titulo;
+        this.anoRealizacao = anoRealizacao;
+        this.realizador = realizador;
+        this.categoria = CATEGORIA_POR_OMISSAO;
+    }
+    
     public Filme(){
         titulo = TITULO_POR_OMISSAO;
         anoRealizacao = ANOREALIZACAO_POR_OMISSAO;

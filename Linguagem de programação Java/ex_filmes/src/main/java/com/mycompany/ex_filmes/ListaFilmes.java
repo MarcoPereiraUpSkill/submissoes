@@ -80,5 +80,9 @@ public class ListaFilmes {
     public String toString() {
         return "ListaFilmes{" + "listaFilmes=" + listaFilmes + ", identificador=" + identificador + '}';
     }
+    
+    public void addFilme(Filme filme){
+        listaFilmes.add(filme);
+    }
 
 }
