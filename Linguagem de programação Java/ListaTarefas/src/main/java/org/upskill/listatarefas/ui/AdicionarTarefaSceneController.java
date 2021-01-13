@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.upskill.listatarefas.controller.AplicacaoController;
 import org.upskill.listatarefas.model.Prioridade;
 
@@ -65,6 +66,9 @@ public class AdicionarTarefaSceneController implements Initializable {
             } else {
                 System.out.println("Erro a adicionar tarefa à lista");
             }
+            
+            Alert alerta = AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, "Nova tarefa", "Adicionar tarefa", "Tarefa adicionada com sucesso!");
+            alerta.show();
         } catch (RuntimeException e) {
             Alert alerta = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Não foi possível criar a tarefa!", "Houve um erro na criação de uma nova tarefa.", e.getMessage());
             alerta.show();
@@ -73,6 +77,9 @@ public class AdicionarTarefaSceneController implements Initializable {
 
     @FXML
     private void cancelarAction(ActionEvent event) {
-
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        txtTarefa.clear();
+        cmbPrioridade.getSelectionModel().clearSelection();
+        stage.close();
     }
 }

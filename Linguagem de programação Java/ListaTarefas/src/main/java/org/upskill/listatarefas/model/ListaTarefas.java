@@ -6,14 +6,15 @@ import java.util.Objects;
 
 public class ListaTarefas {
 
-    public enum ORDENACAO {INSERCAO, PRIORIDADE}
-    
+    public enum ORDENACAO {
+        INSERCAO, PRIORIDADE
+    }
+
     private List<Tarefa> listaTarefas;
 
     public ListaTarefas(List<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
     }
-    
 
     public List<Tarefa> getListaTarefas() {
         return listaTarefas;
@@ -27,7 +28,6 @@ public class ListaTarefas {
     public String toString() {
         return "ListaTarefas{" + "listaTarefas=" + listaTarefas + '}';
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -43,34 +43,38 @@ public class ListaTarefas {
         final ListaTarefas other = (ListaTarefas) obj;
         return Objects.equals(this.listaTarefas, other.listaTarefas);
     }
-    
-    public boolean addTarefa(Tarefa tarefa){
-        return listaTarefas.add(tarefa);
+
+    public boolean addTarefa(Tarefa tarefa) {
+        if (listaTarefas.contains(tarefa)) {
+            throw new IllegalArgumentException("Tarefa já existe!");
+        } else {
+            return listaTarefas.add(tarefa);
+        }
     }
-    
-    public void clearLista(){
+
+    public void clearLista() {
         listaTarefas.clear();
     }
-    
-    public boolean removeLastItem(){
+
+    public boolean removeLastItem() {
         Tarefa removedItem = listaTarefas.remove(listaTarefas.size() - 1);
-        
+
         return !listaTarefas.contains(removedItem);
     }
-    
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return listaTarefas.isEmpty();
     }
-    
-    public List<Tarefa> getListaInsercao(){
+
+    public List<Tarefa> getListaInsercao() {
+        Tarefa.ordenacao = ORDENACAO.INSERCAO;
+        Collections.sort(listaTarefas);
         return listaTarefas;
     }
-    
-    public List<Tarefa> getListaPrioridade(){
-        ListaTarefas copiaLista = new ListaTarefas(listaTarefas);
-        
-        Collections.sort(copiaLista.getListaTarefas());
-        
-        return copiaLista.getListaTarefas();
+
+    public List<Tarefa> getListaPrioridade() {
+        Tarefa.ordenacao = ORDENACAO.PRIORIDADE;
+        Collections.sort(listaTarefas);
+        return listaTarefas;
     }
 }

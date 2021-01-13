@@ -16,9 +16,8 @@ public class AplicacaoController {
 
     //adiciona uma nova tarefa na lista
     public boolean adicionarTarefa(String descricao, String prioridade) {
-        System.out.println("Adicionar tarefa app controller");
         Tarefa tarefa = new Tarefa(descricao, prioridade);
-
+        
         return lista.addTarefa(tarefa);
     }
 
@@ -42,7 +41,7 @@ public class AplicacaoController {
     }
 
     //retorna os elementos da lista, por ordem de inserção
-    public String getListaTarefas() {
+    public String getListaTarefasInsercao() {
         return lista.getListaInsercao().toString();
     }
 

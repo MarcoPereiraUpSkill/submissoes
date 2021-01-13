@@ -2,15 +2,15 @@ package org.upskill.listatarefas.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import javafx.scene.control.Alert;
-import org.upskill.listatarefas.ui.AlertaUI;
+import org.upskill.listatarefas.model.ListaTarefas.ORDENACAO;
 
 public final class Tarefa implements Comparable<Tarefa> {
 
     private String descricao;
     private LocalDateTime instante;
     private Prioridade prioridade;
+
+    public static ORDENACAO ordenacao;
 
     public Tarefa(String descricao, String prioridade) {
         setDescricao(descricao);
@@ -53,11 +53,19 @@ public final class Tarefa implements Comparable<Tarefa> {
 
     @Override
     public int compareTo(Tarefa outraTarefa) {
-        if (prioridade.equals(outraTarefa.prioridade)) {
+        if (ordenacao == ORDENACAO.INSERCAO) {
+            if (prioridade.equals(outraTarefa.prioridade)) {
+                return instante.compareTo(outraTarefa.instante);
+            }
+
+            return prioridade.compareTo(outraTarefa.prioridade);
+        } else {
+            if (instante.equals(outraTarefa.instante)) {
+                return prioridade.compareTo(outraTarefa.prioridade);
+            }
+
             return instante.compareTo(outraTarefa.instante);
         }
-
-        return prioridade.compareTo(outraTarefa.prioridade);
     }
 
     public Prioridade determinarPrioridade(String prioridade) {
@@ -68,7 +76,7 @@ public final class Tarefa implements Comparable<Tarefa> {
                 return listaPrioridades[i];
             }
         }
-        
+
         return Prioridade.NORMAL;
     }
 }
