@@ -36,7 +36,7 @@ public class SceneController implements Initializable {
     private TextField weekDayTxtField;
     @FXML
     private Label fullDateLabel;
-    
+
     private int dia, mes, ano;
     private Data data;
 
@@ -74,24 +74,22 @@ public class SceneController implements Initializable {
 
             data = new Data(ano, mes, dia);
 
-        } catch (DiaInvalidoException die) {
-            Alert alertDia = new Alert(AlertType.ERROR);
-            alertDia.setContentText("Dia " + dia + " não válido!");
-
-            alertDia.show();
-        } catch (MesInvalidoException mie) {
-            Alert alertMes = new Alert(AlertType.ERROR);
-            alertMes.setContentText("Mês " + mes + " não válido!");
-
-            alertMes.show();
-        } catch (RuntimeException e){
-            Alert alertFormat = new Alert(AlertType.ERROR);
-            alertFormat.setContentText("Formato inválido!");
-            
-            alertFormat.show();
+        } catch (MesInvalidoException mesE) {
+            showAlert(AlertType.ERROR, "Mês " + mes + " não válido!");
+        } catch (DiaInvalidoException diaE) {
+            showAlert(AlertType.ERROR, "Dia " + dia + " não é válido!");
+        } catch (RuntimeException e) {
+            showAlert(AlertType.ERROR, "Formato inválido!");
         }
 
         return data;
+    }
+
+    private void showAlert(Alert.AlertType tipo, String msg) {
+        Alert alert = new Alert(tipo);
+        alert.setContentText(msg);
+
+        alert.show();
     }
 
 }

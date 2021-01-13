@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ex_shift.FXMLController">
+   <top>
+      <FlowPane alignment="CENTER" hgap="10.0" prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Quantidade de letras [3, 7]: ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="qtdLetrasInput" prefHeight="25.0" prefWidth="39.0">
+               <FlowPane.margin>
+                  <Insets right="20.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#qtdLetrasBtnAction" text="Confirmar" />
+         </children>
+      </FlowPane>
+   </top>
+   <left>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#shiftLeftBtnAction" text="&lt;&lt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+   </left>
+   <right>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#shiftRightBtnAction" text="&gt;&gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+   </right>
+   <center>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lettersField" text="A B C">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+   </center>
+</BorderPane>
