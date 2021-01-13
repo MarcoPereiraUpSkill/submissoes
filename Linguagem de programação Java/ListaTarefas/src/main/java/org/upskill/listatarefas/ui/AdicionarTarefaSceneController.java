@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -48,6 +49,15 @@ public class AdicionarTarefaSceneController implements Initializable {
             AplicacaoController appController = janelaPrincipalUI.getAplicacaoController();
 
             String tarefa = txtTarefa.getText().trim();
+
+            if (tarefa.isEmpty()) {
+                throw new IllegalArgumentException("Nome de tarefa inválido!");
+            }
+            
+            if(cmbPrioridade.getSelectionModel().isEmpty()){
+                throw new IllegalArgumentException("Selecione uma prioridade!");
+            }
+            
             String prioridade = cmbPrioridade.getValue().toString();
 
             if (appController.adicionarTarefa(tarefa, prioridade)) {
@@ -55,13 +65,14 @@ public class AdicionarTarefaSceneController implements Initializable {
             } else {
                 System.out.println("Erro a adicionar tarefa à lista");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (RuntimeException e) {
+            Alert alerta = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Não foi possível criar a tarefa!", "Houve um erro na criação de uma nova tarefa.", e.getMessage());
+            alerta.show();
         }
     }
 
     @FXML
     private void cancelarAction(ActionEvent event) {
-    }
 
+    }
 }

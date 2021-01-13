@@ -3,6 +3,8 @@ package org.upskill.listatarefas.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import javafx.scene.control.Alert;
+import org.upskill.listatarefas.ui.AlertaUI;
 
 public final class Tarefa implements Comparable<Tarefa> {
 
@@ -37,6 +39,7 @@ public final class Tarefa implements Comparable<Tarefa> {
 
     public final void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
+
     }
 
     @Override
@@ -65,7 +68,7 @@ public final class Tarefa implements Comparable<Tarefa> {
                 return listaPrioridades[i];
             }
         }
-
+        
         return Prioridade.NORMAL;
     }
 }

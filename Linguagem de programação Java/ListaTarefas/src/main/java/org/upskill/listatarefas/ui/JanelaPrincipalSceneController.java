@@ -68,6 +68,8 @@ public class JanelaPrincipalSceneController implements Initializable {
 
     @FXML
     private void limparTarefasAction(ActionEvent event) {
+        appController.eliminarTarefas();
+        atualizarListaTarefas();
     }
 
     @FXML

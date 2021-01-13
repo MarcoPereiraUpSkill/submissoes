@@ -1,5 +1,6 @@
 package org.upskill.listatarefas.model;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,5 +50,27 @@ public class ListaTarefas {
     
     public void clearLista(){
         listaTarefas.clear();
+    }
+    
+    public boolean removeLastItem(){
+        Tarefa removedItem = listaTarefas.remove(listaTarefas.size() - 1);
+        
+        return !listaTarefas.contains(removedItem);
+    }
+    
+    public boolean isEmpty(){
+        return listaTarefas.isEmpty();
+    }
+    
+    public List<Tarefa> getListaInsercao(){
+        return listaTarefas;
+    }
+    
+    public List<Tarefa> getListaPrioridade(){
+        ListaTarefas copiaLista = new ListaTarefas(listaTarefas);
+        
+        Collections.sort(copiaLista.getListaTarefas());
+        
+        return copiaLista.getListaTarefas();
     }
 }

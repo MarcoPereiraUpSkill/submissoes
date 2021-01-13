@@ -33,22 +33,22 @@ public class AplicacaoController {
 
     //elimina apenas a última tarefa inserida na lista
     public boolean eliminarUltimaTarefa() {
-        return true;
+        return lista.removeLastItem();
     }
 
     //verifica se lista está ou não vazia
     public boolean listaVazia() {
-        return true;
+        return lista.isEmpty();
     }
 
     //retorna os elementos da lista, por ordem de inserção
     public String getListaTarefas() {
-        return "Not implemented yet";
+        return lista.getListaInsercao().toString();
     }
 
     //retorna os elementos da lista, por decrescente de prioridade
     public String getListaTarefasPorPrioridade() {
-       return "Not implemented yet";
+       return lista.getListaPrioridade().toString();
     }
 
     //retorna um array com todos os valores de Prioridade
