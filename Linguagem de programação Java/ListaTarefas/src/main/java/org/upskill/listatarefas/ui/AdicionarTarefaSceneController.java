@@ -56,7 +56,7 @@ public class AdicionarTarefaSceneController implements Initializable {
                 System.out.println("Erro a adicionar tarefa à lista");
             }
         } catch (Exception e) {
-            System.out.println("erro idk");
+            System.out.println(e.getMessage());
         }
     }
 

@@ -63,8 +63,6 @@ public final class Tarefa implements Comparable<Tarefa> {
         for (int i = 0; i < listaPrioridades.length; i++) {
             if (listaPrioridades[i].toString().equalsIgnoreCase(prioridade)) {
                 return listaPrioridades[i];
-            } else {
-                throw new IllegalArgumentException("Prioridade inválida!");
             }
         }
 
