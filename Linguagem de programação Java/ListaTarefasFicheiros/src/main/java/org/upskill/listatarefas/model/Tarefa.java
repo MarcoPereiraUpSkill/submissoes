@@ -6,9 +6,9 @@ import java.time.format.DateTimeFormatter;
 public class Tarefa implements Comparable<Tarefa> {
     private String descricao;
     private LocalDateTime instante;
-    private Prioridade prioridade;
+    private String prioridade;
 
-    public Tarefa(String descricao, Prioridade prioridade) {
+    public Tarefa(String descricao, String prioridade) {
         setDescricao(descricao);
         setPrioridade(prioridade);
         instante = LocalDateTime.now();
@@ -18,7 +18,7 @@ public class Tarefa implements Comparable<Tarefa> {
         return descricao;
     }
 
-    public Prioridade getPrioridade() {
+    public String getPrioridade() {
         return prioridade;
     }
 
@@ -33,10 +33,7 @@ public class Tarefa implements Comparable<Tarefa> {
         this.descricao = descricao;
     }
 
-    public final void setPrioridade(Prioridade prioridade) {
-        if (prioridade == null) {
-            throw new IllegalArgumentException("Prioridade inválida!");
-        }
+    public final void setPrioridade(String prioridade) {
         this.prioridade = prioridade;
     }
 

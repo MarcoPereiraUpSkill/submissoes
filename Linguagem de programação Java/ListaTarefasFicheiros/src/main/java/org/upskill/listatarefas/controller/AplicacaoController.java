@@ -2,6 +2,7 @@ package org.upskill.listatarefas.controller;
 
 import org.upskill.listatarefas.model.ListaTarefas;
 import org.upskill.listatarefas.model.Prioridade;
+import org.upskill.listatarefas.model.Tarefa;
 
 public class AplicacaoController {
 
@@ -13,8 +14,10 @@ public class AplicacaoController {
     }
 
     //adiciona uma nova tarefa na lista
-    public boolean adicionarTarefa(String descricao, Prioridade prioridade) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean adicionarTarefa(String descricao, String prioridade) {
+        Tarefa tarefa = new Tarefa(descricao, prioridade);
+
+        return lista.addTarefa(tarefa);
     }
 
     //elimina de lista todas as tarefas
@@ -44,6 +47,6 @@ public class AplicacaoController {
 
     //retorna um array com todos os valores de Prioridade
     public Prioridade[] getPrioridades() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Prioridade.values();
     }
 }
