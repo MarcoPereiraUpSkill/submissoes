@@ -49,7 +49,7 @@ public class JanelaPrincipalUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdicionarNovoContactoScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdicionarTarefaScene.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
@@ -61,7 +61,6 @@ public class JanelaPrincipalUI implements Initializable {
             novoContactoStage.setScene(scene);
 
             appController = new AplicacaoController();
-            atualizaTextAreaListaTelefonica();
 
             AdicionarNovoContactoUI novoContactoUI = loader.getController();
             novoContactoUI.associarParentUI(this);
@@ -72,10 +71,6 @@ public class JanelaPrincipalUI implements Initializable {
 
     public AplicacaoController getAplicacaoController() {
         return appController;
-    }
-
-    public void atualizaTextAreaListaTelefonica() {
-        txtAreaListaTelefonica.setText(appController.getListaTelefonica());
     }
 
     @FXML

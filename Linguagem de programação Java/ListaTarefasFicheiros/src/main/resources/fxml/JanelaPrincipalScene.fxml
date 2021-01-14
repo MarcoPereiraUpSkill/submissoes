@@ -34,6 +34,6 @@
       </MenuBar>
    </top>
    <center>
-      <ListView prefHeight="250.0" prefWidth="466.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="txtAreaTarefas" prefHeight="250.0" prefWidth="466.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

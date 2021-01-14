@@ -1,5 +1,6 @@
 package org.upskill.listatarefas.controller;
 
+import java.util.ArrayList;
 import org.upskill.listatarefas.model.ListaTarefas;
 import org.upskill.listatarefas.model.Prioridade;
 import org.upskill.listatarefas.model.Tarefa;
@@ -10,7 +11,7 @@ public class AplicacaoController {
 
     //inicia atributos
     public AplicacaoController() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        lista = new ListaTarefas(new ArrayList<Tarefa>());
     }
 
     //adiciona uma nova tarefa na lista
@@ -20,30 +21,35 @@ public class AplicacaoController {
         return lista.addTarefa(tarefa);
     }
 
+    public ListaTarefas getLista(){
+        return lista;
+    }
+    
     //elimina de lista todas as tarefas
     public void eliminarTarefas() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       lista.clearLista();
     }
 
     //elimina apenas a última tarefa inserida na lista
     public boolean eliminarUltimaTarefa() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lista.removeLastItem();
     }
 
     //verifica se lista está ou não vazia
     public boolean listaVazia() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lista.isEmpty();
     }
 
     //retorna os elementos da lista, por ordem de inserção
-    public String getListaTarefas() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String getListaTarefasInsercao() {
+        return lista.getListaInsercao().toString();
     }
 
     //retorna os elementos da lista, por decrescente de prioridade
     public String getListaTarefasPorPrioridade() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return lista.getListaPrioridade().toString();
     }
+
 
     //retorna um array com todos os valores de Prioridade
     public Prioridade[] getPrioridades() {

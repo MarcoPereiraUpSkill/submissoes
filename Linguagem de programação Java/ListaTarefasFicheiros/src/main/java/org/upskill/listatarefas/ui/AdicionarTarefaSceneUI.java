@@ -25,7 +25,6 @@ import org.upskill.listatarefas.model.Prioridade;
 public class AdicionarTarefaSceneUI implements Initializable {
 
     JanelaPrincipalSceneUI janelaPrincipalUI;
-    AplicacaoController appController;
 
     @FXML
     private Button btnCriarTarefa;
@@ -46,9 +45,7 @@ public class AdicionarTarefaSceneUI implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        appController = janelaPrincipalUI.getController();
-
-        cmbPrioridade.getItems().addAll(appController.getPrioridades());
+        cmbPrioridade.getItems().addAll(Prioridade.values());
     }
 
     void associarParentUI(JanelaPrincipalSceneUI aThis) {
@@ -57,6 +54,7 @@ public class AdicionarTarefaSceneUI implements Initializable {
 
     @FXML
     private void criarTarefaAction(ActionEvent event) {
+        AplicacaoController appController = janelaPrincipalUI.getController();
 
         try {
             String tarefa = txtTarefa.getText().trim();
