@@ -1,6 +1,8 @@
 package org.upskill.listatarefas.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import org.upskill.listatarefas.model.FicheiroListaTarefas;
 import org.upskill.listatarefas.model.ListaTarefas;
 import org.upskill.listatarefas.model.Prioridade;
 import org.upskill.listatarefas.model.Tarefa;
@@ -8,10 +10,12 @@ import org.upskill.listatarefas.model.Tarefa;
 public class AplicacaoController {
 
     private ListaTarefas lista;
+    private FicheiroListaTarefas ficheiroListaTarefas;
 
     //inicia atributos
     public AplicacaoController() {
         lista = new ListaTarefas(new ArrayList<Tarefa>());
+        ficheiroListaTarefas = new FicheiroListaTarefas();
     }
 
     //adiciona uma nova tarefa na lista
@@ -21,13 +25,13 @@ public class AplicacaoController {
         return lista.addTarefa(tarefa);
     }
 
-    public ListaTarefas getLista(){
+    public ListaTarefas getLista() {
         return lista;
     }
-    
+
     //elimina de lista todas as tarefas
     public void eliminarTarefas() {
-       lista.clearLista();
+        lista.clearLista();
     }
 
     //elimina apenas a última tarefa inserida na lista
@@ -47,12 +51,19 @@ public class AplicacaoController {
 
     //retorna os elementos da lista, por decrescente de prioridade
     public String getListaTarefasPorPrioridade() {
-       return lista.getListaPrioridade().toString();
+        return lista.getListaPrioridade().toString();
     }
-
 
     //retorna um array com todos os valores de Prioridade
     public Prioridade[] getPrioridades() {
         return Prioridade.values();
+    }
+
+    public boolean serializar() {
+        return ficheiroListaTarefas.serializar(lista);
+    }
+
+    public boolean serializar(File ficheiroExportar) {
+        return ficheiroListaTarefas.serializar(ficheiroExportar, lista);
     }
 }

@@ -212,4 +212,8 @@ public class JanelaPrincipalUI implements Initializable {
         }
     }
 
+    private void atualizaTextAreaListaTelefonica() {
+       
+    }
+
 }

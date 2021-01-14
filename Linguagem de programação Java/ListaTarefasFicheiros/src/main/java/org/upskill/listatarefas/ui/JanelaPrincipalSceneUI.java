@@ -5,7 +5,10 @@
  */
 package org.upskill.listatarefas.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.upskill.listatarefas.controller.AplicacaoController;
@@ -65,16 +69,41 @@ public class JanelaPrincipalSceneUI implements Initializable {
     }
 
     @FXML
-    private void mnuAdicionarTarefa(ActionEvent event) throws IOException{
+    private void mnuAdicionarTarefa(ActionEvent event) throws IOException {
         novaTarefaStage.show();
     }
 
     @FXML
-    private void mnuGuardarComoTexto(ActionEvent event) {
+    private void mnuGuardarComoTexto(ActionEvent event) throws FileNotFoundException {
+        try {
+            FileChooser fileChooser = new FileChooser();
+
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            File file = fileChooser.showSaveDialog(novaTarefaStage);
+
+            StringBuilder s = new StringBuilder();
+
+            for (int i = 0; i < appController.getLista().getListaTarefas().size(); i++) {
+                s.append(appController.getLista().getListaTarefas().get(i).toString()).append("\n");
+            }
+
+            if (file != null) {
+                guardarComoTexto(s.toString(), file);
+            }
+        } catch (FileNotFoundException e) {
+            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar ficheiro como texto", "Erro ao guardar ficheiro!", "Não foi possível guardar o ficheiro como texto!");
+            errAlert.show();
+        }
+
+        Alert sucAlert = AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, "Guardar ficheiro como texto", "Ficheiro criado com sucesso!", "O ficheiro foi criado com sucesso!");
+        sucAlert.show();
     }
 
     @FXML
     private void mnuSerializacao(ActionEvent event) {
+
     }
 
     @FXML
@@ -109,4 +138,17 @@ public class JanelaPrincipalSceneUI implements Initializable {
         return appController;
     }
 
+    private void guardarComoTexto(String content, File file) throws FileNotFoundException {
+        try {
+            PrintWriter writer = new PrintWriter(file);
+            try {
+                writer.println(content);
+            } finally {
+                writer.close();
+            }
+        } catch (IOException e) {
+            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar documento como texto.", "Erro ao guardar documento!", "Não foi possível guardar o documento como texto.");
+            errAlert.show();
+        }
+    }
 }
