@@ -17,6 +17,10 @@ public class ListaTarefas {
         this.listaTarefas = listaTarefas;
     }
 
+    public ListaTarefas() {
+        listaTarefas = new ArrayList<Tarefa>();
+    }
+
     public List<Tarefa> getListaTarefas() {
         return listaTarefas;
     }
@@ -53,6 +57,18 @@ public class ListaTarefas {
         }
     }
 
+    public int adicionarListaTarefas(ListaTarefas outraListaTarefas) {
+        int totalContactosAdicionados = 0;
+
+        for (Tarefa tarefa : outraListaTarefas.listaTarefas) {
+            boolean tarefaAdicionada = addTarefa(tarefa);
+            if (tarefaAdicionada) {
+                totalContactosAdicionados++;
+            }
+        }
+        return totalContactosAdicionados;
+    }
+
     public void clearLista() {
         listaTarefas.clear();
     }
@@ -77,5 +93,16 @@ public class ListaTarefas {
         Tarefa.ordenacao = ORDENACAO.PRIORIDADE;
         Collections.sort(listaTarefas);
         return listaTarefas;
+    }
+
+    public String[] getListaComoArray() {
+        String[] listaTarefasStr = new String[listaTarefas.size()];
+        int i = 0;
+
+        for (String tarefa : listaTarefasStr) {
+            listaTarefasStr[i++] = tarefa;
+        }
+
+        return listaTarefasStr;
     }
 }

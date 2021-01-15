@@ -39,6 +39,17 @@ public class JanelaPrincipalSceneUI implements Initializable {
     @FXML
     private ListView<String> txtAreaTarefas;
 
+    private static final String CABECALHO_IMPORTAR = "Importar Lista.";
+    private static final String CABECALHO_EXPORTAR = "Exportar Lista.";
+
+    private static final int SERIALIZACAO = 1;
+    private static final String DESCRICAO_SERIALIZACAO = "Ficheiro Lista Telefónica";
+    private static final String EXTENSAO_SERIALIZACAO = "*.ltf";
+
+    private static final int TEXTO = 2;
+    private static final String DESCRICAO_TEXTO = "Ficheiro de Texto";
+    private static final String EXTENSAO_TEXTO = "*.txt";
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -103,7 +114,7 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
     @FXML
     private void mnuSerializacao(ActionEvent event) {
-
+        exportarLista(SERIALIZACAO);
     }
 
     @FXML
@@ -120,6 +131,53 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
     @FXML
     private void mnuRemoverTodas(ActionEvent event) {
+    }
+
+    private void exportarLista(int tipoFicheiro) {
+        String descricao, extensao;
+
+        switch (tipoFicheiro) {
+            case SERIALIZACAO:
+                descricao = DESCRICAO_SERIALIZACAO;
+                extensao = EXTENSAO_SERIALIZACAO;
+                break;
+
+            case TEXTO:
+                descricao = DESCRICAO_TEXTO;
+                extensao = EXTENSAO_TEXTO;
+                break;
+
+            default:
+                throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
+        }
+
+        FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
+        File ficheiroExportar = flChooser.showSaveDialog(txtAreaTarefas.getScene().getWindow());
+
+        if (ficheiroExportar != null) {
+            boolean gravou = false;
+
+            switch (tipoFicheiro) {
+                case SERIALIZACAO:
+                    gravou = appController.serializar(ficheiroExportar);
+                    break;
+
+                case TEXTO:
+                    gravou = appController.exportarTexto(ficheiroExportar);
+                    break;
+
+            }
+            if (gravou) {
+                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
+                        "Contactos exportados com sucesso.").show();
+            } else {
+                AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
+                        "Problema a exportar a lista de contactos!").show();
+            }
+        } else {
+            AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
+                    "Não foi seleccionado nenhum ficheiro!").show();
+        }
     }
 
     public void atualizarListaTarefas() {

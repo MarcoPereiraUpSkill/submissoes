@@ -59,11 +59,25 @@ public class AplicacaoController {
         return Prioridade.values();
     }
 
+    public boolean exportarTexto(File ficheiroExportar) {
+        return ficheiroListaTarefas.exportarTexto(ficheiroExportar, lista);
+    }
+
     public boolean serializar() {
         return ficheiroListaTarefas.serializar(lista);
     }
 
     public boolean serializar(File ficheiroExportar) {
         return ficheiroListaTarefas.serializar(ficheiroExportar, lista);
+    }
+
+    public void desserializar() {
+        lista = ficheiroListaTarefas.desserializar();
+    }
+
+    public int desserializar(File ficheiroImportar) {
+        ListaTarefas listaTarefasImportada = ficheiroListaTarefas.desserializar(ficheiroImportar);
+
+        return lista.adicionarListaTarefas(listaTarefasImportada);
     }
 }

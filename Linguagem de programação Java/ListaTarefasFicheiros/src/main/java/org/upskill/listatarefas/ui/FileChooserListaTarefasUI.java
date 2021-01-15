@@ -3,20 +3,20 @@ package org.upskill.listatarefas.ui;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class FileChooserListaTelefonicaUI {
+public class FileChooserListaTarefasUI {
 
     private FileChooser fileChooser;
 
-    private FileChooserListaTelefonicaUI(String descricao, String extensao) {
+    private FileChooserListaTarefasUI(String descricao, String extensao) {
         fileChooser = new FileChooser();
 
         associarFiltro(descricao, extensao);
     }
 
-    public static FileChooser criarFileChooserListaTelefonica(String descricao, String extensao) {
-        FileChooserListaTelefonicaUI fcListaTelefonica = new FileChooserListaTelefonicaUI(descricao, extensao);
+    public static FileChooser criarFileChooserListaTarefas(String descricao, String extensao) {
+        FileChooserListaTarefasUI fcListaTarefas = new FileChooserListaTarefasUI(descricao, extensao);
 
-        return fcListaTelefonica.fileChooser;
+        return fcListaTarefas.fileChooser;
     }
 
     private void associarFiltro(String descricao, String extensao) {

@@ -4,9 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Tarefa implements Comparable<Tarefa> {
- private String descricao;
+
+    private String descricao;
     private LocalDateTime instante;
     private Prioridade prioridade;
+
+    private static final char SEPARADOR = '-';
 
     public static ListaTarefas.ORDENACAO ordenacao;
 
@@ -76,6 +79,23 @@ public class Tarefa implements Comparable<Tarefa> {
         }
 
         return Prioridade.NORMAL;
+    }
+
+    public static final String[] getTarefaComoArray(String tarefa) {
+        String[] dados = tarefa.trim().split(String.valueOf(SEPARADOR));
+        int nrAtributos = 3;
+
+        if (dados.length == nrAtributos) {
+            try {
+                new Tarefa(dados[0], dados[1]);
+
+                return dados;
+            } catch (Exception ex) {
+                throw new RuntimeException("Dados Inválidos do Contacto");
+            }
+        }
+
+        throw new RuntimeException("Dados Inválidos do Contacto");
     }
 
 }
