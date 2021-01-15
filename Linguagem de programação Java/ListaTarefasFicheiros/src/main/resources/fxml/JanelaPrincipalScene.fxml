@@ -11,10 +11,10 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Ficheiros">
+          <Menu mnemonicParsing="false" onAction="#mnuListaShowing" text="Ficheiros">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#mnuGuardarComoTexto" text="Guardar como texto" />
-                  <MenuItem mnemonicParsing="false" onAction="#mnuSerializacao" text="Serialização" />
+              <MenuItem fx:id="guardarComoTextoBtn" mnemonicParsing="false" onAction="#mnuGuardarComoTexto" text="Guardar como texto" />
+                  <MenuItem fx:id="serializacaoBtn" mnemonicParsing="false" onAction="#mnuSerializacao" text="Serialização" />
                   <MenuItem mnemonicParsing="false" onAction="#mnuDesserializacao" text="Desserialização" />
                   <MenuItem mnemonicParsing="false" onAction="#mnuSair" text="Sair" />
             </items>

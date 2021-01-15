@@ -1,11 +1,12 @@
 package org.upskill.listatarefas.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ListaTarefas {
+public class ListaTarefas implements Serializable{
 
     public enum ORDENACAO {
         INSERCAO, PRIORIDADE
@@ -13,12 +14,13 @@ public class ListaTarefas {
 
     private List<Tarefa> listaTarefas;
 
+    
     public ListaTarefas(List<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
     }
 
     public ListaTarefas() {
-        listaTarefas = new ArrayList<Tarefa>();
+        listaTarefas = new ArrayList<>();
     }
 
     public List<Tarefa> getListaTarefas() {
@@ -58,15 +60,16 @@ public class ListaTarefas {
     }
 
     public int adicionarListaTarefas(ListaTarefas outraListaTarefas) {
-        int totalContactosAdicionados = 0;
+        int totalTarefasAdicionadas = 0;
 
         for (Tarefa tarefa : outraListaTarefas.listaTarefas) {
             boolean tarefaAdicionada = addTarefa(tarefa);
+            
             if (tarefaAdicionada) {
-                totalContactosAdicionados++;
+                totalTarefasAdicionadas++;
             }
         }
-        return totalContactosAdicionados;
+        return totalTarefasAdicionadas;
     }
 
     public void clearLista() {
@@ -105,4 +108,6 @@ public class ListaTarefas {
 
         return listaTarefasStr;
     }
+    
+    
 }

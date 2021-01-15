@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -49,6 +51,10 @@ public class JanelaPrincipalSceneUI implements Initializable {
     private static final int TEXTO = 2;
     private static final String DESCRICAO_TEXTO = "Ficheiro de Texto";
     private static final String EXTENSAO_TEXTO = "*.txt";
+    @FXML
+    private MenuItem guardarComoTextoBtn;
+    @FXML
+    private MenuItem serializacaoBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,6 +75,7 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
             AdicionarTarefaSceneUI novaTarefaUI = loader.getController();
             novaTarefaUI.associarParentUI(this);
+
         } catch (IOException ex) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, "Erro.", ex.getMessage());
         }
@@ -77,6 +84,13 @@ public class JanelaPrincipalSceneUI implements Initializable {
     @FXML
     private void teclaPressionadaAction(KeyEvent event) {
 
+    }
+
+    @FXML
+    private void mnuListaShowing(ActionEvent event) {
+        System.out.println("Lista showing");
+        serializacaoBtn.setDisable(appController.listaVazia());
+        guardarComoTextoBtn.setDisable(appController.listaVazia());
     }
 
     @FXML
@@ -119,6 +133,7 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
     @FXML
     private void mnuDesserializacao(ActionEvent event) {
+        importarLista(SERIALIZACAO);
     }
 
     @FXML
@@ -180,6 +195,55 @@ public class JanelaPrincipalSceneUI implements Initializable {
         }
     }
 
+    private void importarLista(int tipoFicheiro) {
+        String descricao, extensao;
+
+        switch (tipoFicheiro) {
+            case SERIALIZACAO:
+                descricao = DESCRICAO_SERIALIZACAO;
+                extensao = EXTENSAO_SERIALIZACAO;
+                break;
+
+            case TEXTO:
+                descricao = DESCRICAO_TEXTO;
+                extensao = EXTENSAO_TEXTO;
+                break;
+
+            default:
+                throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
+        }
+
+        FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
+        File ficheiroImportar = flChooser.showOpenDialog(txtAreaTarefas.getScene().getWindow());
+
+        if (ficheiroImportar != null) {
+            int numTarefasImportadas = 0;
+
+            switch (tipoFicheiro) {
+                case SERIALIZACAO:
+                    numTarefasImportadas = appController.desserializar(ficheiroImportar);
+                    break;
+
+                case TEXTO:
+                    numTarefasImportadas = appController.importarTexto(ficheiroImportar);
+                    break;
+            }
+
+            if (numTarefasImportadas > 0) {
+                atualizarListaTarefas();
+
+                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                        String.format("%d contacto(s) importado(s).", numTarefasImportadas)).show();
+            } else {
+                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                        "Ficheiro sem contactos telefónicos para importar!").show();
+            }
+        } else {
+            AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                    "Não foi seleccionado nenhum ficheiro!").show();
+        }
+    }
+
     public void atualizarListaTarefas() {
         ListaTarefas listaTarefas = appController.getLista();
 
@@ -205,8 +269,10 @@ public class JanelaPrincipalSceneUI implements Initializable {
                 writer.close();
             }
         } catch (IOException e) {
-            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar documento como texto.", "Erro ao guardar documento!", "Não foi possível guardar o documento como texto.");
+            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar documento como texto.", "Erro ao guardar documento!",
+                    "Não foi possível guardar o documento como texto.");
             errAlert.show();
         }
     }
+
 }

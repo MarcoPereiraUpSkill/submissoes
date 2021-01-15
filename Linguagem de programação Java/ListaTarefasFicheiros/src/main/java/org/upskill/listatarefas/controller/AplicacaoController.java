@@ -63,6 +63,12 @@ public class AplicacaoController {
         return ficheiroListaTarefas.exportarTexto(ficheiroExportar, lista);
     }
 
+    public int importarTexto(File ficheiroImportar) {
+        ListaTarefas listaTarefasImportada = ficheiroListaTarefas.importarTexto(ficheiroImportar);
+
+        return lista.adicionarListaTarefas(listaTarefasImportada);
+    }
+
     public boolean serializar() {
         return ficheiroListaTarefas.serializar(lista);
     }

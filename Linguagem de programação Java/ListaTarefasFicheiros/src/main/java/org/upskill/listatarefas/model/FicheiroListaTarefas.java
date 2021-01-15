@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Scanner;
 
 public class FicheiroListaTarefas {
@@ -14,7 +15,6 @@ public class FicheiroListaTarefas {
     public static final String NOME_FICHEIRO_SERIALIZAR = "ListaTarefas.ltf";
 
     public FicheiroListaTarefas() {
-
     }
 
     public boolean serializar(ListaTarefas listaTarefas) {
@@ -27,16 +27,16 @@ public class FicheiroListaTarefas {
 
     public boolean serializar(File ficheiro, ListaTarefas listaTarefas) {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(
-                    new FileOutputStream(ficheiro));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ficheiro));
             try {
                 out.writeObject(listaTarefas);
-
+                
                 return true;
             } finally {
                 out.close();
             }
         } catch (IOException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }
@@ -62,10 +62,11 @@ public class FicheiroListaTarefas {
                 in.close();
             }
         } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
             return new ListaTarefas();
         }
     }
-    
+
     public boolean exportarTexto(File ficheiro, ListaTarefas listaTarefas) {
         try {
             PrintWriter out = new PrintWriter(ficheiro);
@@ -94,7 +95,7 @@ public class FicheiroListaTarefas {
             try {
                 while (in.hasNextLine()) {
                     String linha = in.nextLine();
-                    String []dadosTarefa = Tarefa.getTarefaComoArray(linha);
+                    String[] dadosTarefa = Tarefa.getTarefaComoArray(linha);
 
                     Tarefa tarefa = new Tarefa(dadosTarefa[0], dadosTarefa[1]);
                     lista.addTarefa(tarefa);
@@ -109,4 +110,5 @@ public class FicheiroListaTarefas {
         }
     }
 
+    
 }

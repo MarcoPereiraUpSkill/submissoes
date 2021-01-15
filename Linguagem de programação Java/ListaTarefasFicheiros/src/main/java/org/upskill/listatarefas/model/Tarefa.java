@@ -1,9 +1,10 @@
 package org.upskill.listatarefas.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Tarefa implements Comparable<Tarefa> {
+public class Tarefa implements Comparable<Tarefa>, Serializable {
 
     private String descricao;
     private LocalDateTime instante;
