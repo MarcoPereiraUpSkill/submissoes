@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,8 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -55,6 +58,10 @@ public class JanelaPrincipalSceneUI implements Initializable {
     private MenuItem guardarComoTextoBtn;
     @FXML
     private MenuItem serializacaoBtn;
+    @FXML
+    private MenuItem mnuItemRemoverSelec;
+    @FXML
+    private MenuItem mnuItemRemoveAll;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,12 +90,24 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
     @FXML
     private void teclaPressionadaAction(KeyEvent event) {
+        if (event.isControlDown() && event.getCode() == KeyCode.Z) {
+            appController.eliminarUltimaTarefa();
+            atualizarListaTarefas();
+        }
 
+        if (event.isControlDown() && event.getCode() == KeyCode.P) {
+            appController.getListaTarefasPorPrioridade();
+            atualizarListaTarefas();
+        }
+
+        if (event.isControlDown() && event.getCode() == KeyCode.O) {
+            appController.getListaTarefasInsercao();
+            atualizarListaTarefas();
+        }
     }
 
     @FXML
-    private void mnuListaShowing(ActionEvent event) {
-        System.out.println("Lista showing");
+    private void mnuShowingAction(Event event) {
         serializacaoBtn.setDisable(appController.listaVazia());
         guardarComoTextoBtn.setDisable(appController.listaVazia());
     }
@@ -101,28 +120,37 @@ public class JanelaPrincipalSceneUI implements Initializable {
     @FXML
     private void mnuGuardarComoTexto(ActionEvent event) throws FileNotFoundException {
         try {
-            FileChooser fileChooser = new FileChooser();
+            Optional<ButtonType> confResult = AlertaUI.criarAlerta(Alert.AlertType.CONFIRMATION, "Tarefas", "Guardar dados",
+                    "Deseja armazenar os dados num ficheiro de texto?").showAndWait();
 
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
-            fileChooser.getExtensionFilters().add(extFilter);
+            if (confResult.isPresent() && confResult.get() == ButtonType.OK) {
+                FileChooser fileChooser = new FileChooser();
 
-            File file = fileChooser.showSaveDialog(novaTarefaStage);
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+                fileChooser.getExtensionFilters().add(extFilter);
 
-            StringBuilder s = new StringBuilder();
+                File file = fileChooser.showSaveDialog(novaTarefaStage);
 
-            for (int i = 0; i < appController.getLista().getListaTarefas().size(); i++) {
-                s.append(appController.getLista().getListaTarefas().get(i).toString()).append("\n");
-            }
+                StringBuilder s = new StringBuilder();
 
-            if (file != null) {
-                guardarComoTexto(s.toString(), file);
+                for (int i = 0; i < appController.getLista().getListaTarefas().size(); i++) {
+                    s.append(appController.getLista().getListaTarefas().get(i).toString()).append("\n");
+                }
+
+                if (file != null) {
+                    guardarComoTexto(s.toString(), file);
+                }
+            } else {
+                return;
             }
         } catch (FileNotFoundException e) {
-            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar ficheiro como texto", "Erro ao guardar ficheiro!", "Não foi possível guardar o ficheiro como texto!");
+            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Guardar ficheiro como texto", "Erro ao guardar ficheiro!",
+                    "Não foi possível guardar o ficheiro como texto!");
             errAlert.show();
         }
 
-        Alert sucAlert = AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, "Guardar ficheiro como texto", "Ficheiro criado com sucesso!", "O ficheiro foi criado com sucesso!");
+        Alert sucAlert = AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, "Guardar ficheiro como texto", "Ficheiro criado com sucesso!",
+                "O ficheiro foi criado com sucesso!");
         sucAlert.show();
     }
 
@@ -142,105 +170,135 @@ public class JanelaPrincipalSceneUI implements Initializable {
 
     @FXML
     private void mnuRemoverSelecionada(ActionEvent event) {
+        String tarefa = txtAreaTarefas.getSelectionModel().getSelectedItem();
+
+        try {
+            if (appController.removerTarefa(tarefa)) {
+                atualizarListaTarefas();
+
+                Alert sucAlert = AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, "Tarefas", "Remover tarefa",
+                        "Tarefa removida com sucesso");
+                sucAlert.show();
+            } else {
+                throw new RuntimeException("Erro ao remover tarefa!");
+            }
+        } catch (RuntimeException e) {
+            Alert errAlert = AlertaUI.criarAlerta(Alert.AlertType.ERROR, "Tarefas", "Remover tarefa",
+                    e.getMessage());
+            errAlert.show();
+        }
+
     }
 
     @FXML
     private void mnuRemoverTodas(ActionEvent event) {
+        appController.eliminarTarefas();
+        atualizarListaTarefas();
     }
 
     private void exportarLista(int tipoFicheiro) {
-        String descricao, extensao;
+        Optional<ButtonType> confResult = AlertaUI.criarAlerta(Alert.AlertType.CONFIRMATION, "Tarefas", "Guardar dados",
+                "Deseja armazenar os dados num ficheiro binário?").showAndWait();
 
-        switch (tipoFicheiro) {
-            case SERIALIZACAO:
-                descricao = DESCRICAO_SERIALIZACAO;
-                extensao = EXTENSAO_SERIALIZACAO;
-                break;
-
-            case TEXTO:
-                descricao = DESCRICAO_TEXTO;
-                extensao = EXTENSAO_TEXTO;
-                break;
-
-            default:
-                throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
-        }
-
-        FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
-        File ficheiroExportar = flChooser.showSaveDialog(txtAreaTarefas.getScene().getWindow());
-
-        if (ficheiroExportar != null) {
-            boolean gravou = false;
+        if (confResult.isPresent() && confResult.get() == ButtonType.OK) {
+            String descricao, extensao;
 
             switch (tipoFicheiro) {
                 case SERIALIZACAO:
-                    gravou = appController.serializar(ficheiroExportar);
+                    descricao = DESCRICAO_SERIALIZACAO;
+                    extensao = EXTENSAO_SERIALIZACAO;
                     break;
 
                 case TEXTO:
-                    gravou = appController.exportarTexto(ficheiroExportar);
+                    descricao = DESCRICAO_TEXTO;
+                    extensao = EXTENSAO_TEXTO;
                     break;
 
+                default:
+                    throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
             }
-            if (gravou) {
-                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
-                        "Contactos exportados com sucesso.").show();
+
+            FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
+            File ficheiroExportar = flChooser.showSaveDialog(txtAreaTarefas.getScene().getWindow());
+
+            if (ficheiroExportar != null) {
+                boolean gravou = false;
+
+                switch (tipoFicheiro) {
+                    case SERIALIZACAO:
+                        gravou = appController.serializar(ficheiroExportar);
+                        break;
+
+                    case TEXTO:
+                        gravou = appController.exportarTexto(ficheiroExportar);
+                        break;
+
+                }
+                if (gravou) {
+                    AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
+                            "Tarefas exportadas com sucesso.").show();
+                } else {
+                    AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
+                            "Problema a exportar a lista de tarefas!").show();
+                }
             } else {
                 AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
-                        "Problema a exportar a lista de contactos!").show();
+                        "Não foi seleccionado nenhum ficheiro!").show();
             }
-        } else {
-            AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_EXPORTAR,
-                    "Não foi seleccionado nenhum ficheiro!").show();
         }
     }
 
     private void importarLista(int tipoFicheiro) {
-        String descricao, extensao;
-
-        switch (tipoFicheiro) {
-            case SERIALIZACAO:
-                descricao = DESCRICAO_SERIALIZACAO;
-                extensao = EXTENSAO_SERIALIZACAO;
-                break;
-
-            case TEXTO:
-                descricao = DESCRICAO_TEXTO;
-                extensao = EXTENSAO_TEXTO;
-                break;
-
-            default:
-                throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
-        }
-
-        FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
-        File ficheiroImportar = flChooser.showOpenDialog(txtAreaTarefas.getScene().getWindow());
-
-        if (ficheiroImportar != null) {
-            int numTarefasImportadas = 0;
+        try {
+            String descricao, extensao;
 
             switch (tipoFicheiro) {
                 case SERIALIZACAO:
-                    numTarefasImportadas = appController.desserializar(ficheiroImportar);
+                    descricao = DESCRICAO_SERIALIZACAO;
+                    extensao = EXTENSAO_SERIALIZACAO;
                     break;
 
                 case TEXTO:
-                    numTarefasImportadas = appController.importarTexto(ficheiroImportar);
+                    descricao = DESCRICAO_TEXTO;
+                    extensao = EXTENSAO_TEXTO;
                     break;
+
+                default:
+                    throw new IllegalArgumentException("Tipo de ficheiro desconhecido.");
             }
 
-            if (numTarefasImportadas > 0) {
-                atualizarListaTarefas();
+            FileChooser flChooser = FileChooserListaTarefasUI.criarFileChooserListaTarefas(descricao, extensao);
+            File ficheiroImportar = flChooser.showOpenDialog(txtAreaTarefas.getScene().getWindow());
 
-                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
-                        String.format("%d contacto(s) importado(s).", numTarefasImportadas)).show();
+            if (ficheiroImportar != null) {
+                int numTarefasImportadas = 0;
+
+                switch (tipoFicheiro) {
+                    case SERIALIZACAO:
+                        numTarefasImportadas = appController.desserializar(ficheiroImportar);
+                        break;
+
+                    case TEXTO:
+                        numTarefasImportadas = appController.importarTexto(ficheiroImportar);
+                        break;
+                }
+
+                if (numTarefasImportadas > 0) {
+                    atualizarListaTarefas();
+
+                    AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                            String.format("%d tarefa(s) importada(s).", numTarefasImportadas)).show();
+                } else {
+                    AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                            "Ficheiro sem tarefas para importar!").show();
+                }
             } else {
-                AlertaUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
-                        "Ficheiro sem contactos telefónicos para importar!").show();
+                AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
+                        "Não foi seleccionado nenhum ficheiro!").show();
             }
-        } else {
+        } catch (RuntimeException e) {
             AlertaUI.criarAlerta(Alert.AlertType.ERROR, MainApp.TITULO_APLICACAO, CABECALHO_IMPORTAR,
-                    "Não foi seleccionado nenhum ficheiro!").show();
+                    e.getMessage()).show();
         }
     }
 
@@ -275,4 +333,9 @@ public class JanelaPrincipalSceneUI implements Initializable {
         }
     }
 
+    @FXML
+    private void taskMnuShowing(Event event) {
+        mnuItemRemoverSelec.setDisable(txtAreaTarefas.getSelectionModel().isEmpty());
+        mnuItemRemoveAll.setDisable(appController.listaVazia());
+    }
 }

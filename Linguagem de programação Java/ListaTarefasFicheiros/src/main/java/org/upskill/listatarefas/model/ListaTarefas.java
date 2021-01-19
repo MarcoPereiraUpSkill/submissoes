@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ListaTarefas implements Serializable{
+public class ListaTarefas implements Serializable {
+    private static final long serialVersionUID = 6529685098267757690L;
 
     public enum ORDENACAO {
         INSERCAO, PRIORIDADE
@@ -14,7 +15,6 @@ public class ListaTarefas implements Serializable{
 
     private List<Tarefa> listaTarefas;
 
-    
     public ListaTarefas(List<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
     }
@@ -53,10 +53,18 @@ public class ListaTarefas implements Serializable{
 
     public boolean addTarefa(Tarefa tarefa) {
         if (listaTarefas.contains(tarefa)) {
-            throw new IllegalArgumentException("Tarefa já existe!");
+            return false;
         } else {
             return listaTarefas.add(tarefa);
         }
+    }
+
+    public Tarefa getTarefaFromString(String tarefaStr) {
+        String[] tarefaParams = tarefaStr.split("-", 3);
+
+        Tarefa tarefa = new Tarefa(tarefaParams[0].trim(), tarefaParams[1].trim());
+
+        return tarefa;
     }
 
     public int adicionarListaTarefas(ListaTarefas outraListaTarefas) {
@@ -64,7 +72,7 @@ public class ListaTarefas implements Serializable{
 
         for (Tarefa tarefa : outraListaTarefas.listaTarefas) {
             boolean tarefaAdicionada = addTarefa(tarefa);
-            
+
             if (tarefaAdicionada) {
                 totalTarefasAdicionadas++;
             }
@@ -80,6 +88,21 @@ public class ListaTarefas implements Serializable{
         Tarefa removedItem = listaTarefas.remove(listaTarefas.size() - 1);
 
         return !listaTarefas.contains(removedItem);
+    }
+
+    public boolean removerTarefa(String tarefa) {
+        boolean removeu = false;
+
+        for (Tarefa t : listaTarefas) {
+            if (t.toString().equals(tarefa)) {
+                listaTarefas.remove(t);
+                return true;
+            } else {
+                removeu = false;
+            }
+        }
+
+        return removeu;
     }
 
     public boolean isEmpty() {
@@ -108,6 +131,5 @@ public class ListaTarefas implements Serializable{
 
         return listaTarefasStr;
     }
-    
-    
+
 }

@@ -11,7 +11,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" onAction="#mnuListaShowing" text="Ficheiros">
+          <Menu mnemonicParsing="false" onShowing="#mnuShowingAction" text="Ficheiros">
             <items>
               <MenuItem fx:id="guardarComoTextoBtn" mnemonicParsing="false" onAction="#mnuGuardarComoTexto" text="Guardar como texto" />
                   <MenuItem fx:id="serializacaoBtn" mnemonicParsing="false" onAction="#mnuSerializacao" text="Serialização" />
@@ -22,10 +22,10 @@
           <Menu mnemonicParsing="false" text="Tarefa">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#mnuAdicionarTarefa" text="Adicionar" />
-                  <Menu mnemonicParsing="false" text="Remover">
+                  <Menu mnemonicParsing="false" onShowing="#taskMnuShowing" text="Remover">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#mnuRemoverSelecionada" text="Selecionada" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnuRemoverTodas" text="Todas" />
+                      <MenuItem fx:id="mnuItemRemoverSelec" mnemonicParsing="false" onAction="#mnuRemoverSelecionada" text="Selecionada" />
+                        <MenuItem fx:id="mnuItemRemoveAll" mnemonicParsing="false" onAction="#mnuRemoverTodas" text="Todas" />
                     </items>
                   </Menu>
                </items>

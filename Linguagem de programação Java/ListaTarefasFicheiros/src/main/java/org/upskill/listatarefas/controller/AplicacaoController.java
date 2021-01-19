@@ -33,6 +33,10 @@ public class AplicacaoController {
     public void eliminarTarefas() {
         lista.clearLista();
     }
+    
+    public boolean removerTarefa(String tarefa){
+        return lista.removerTarefa(tarefa);
+    }
 
     //elimina apenas a última tarefa inserida na lista
     public boolean eliminarUltimaTarefa() {

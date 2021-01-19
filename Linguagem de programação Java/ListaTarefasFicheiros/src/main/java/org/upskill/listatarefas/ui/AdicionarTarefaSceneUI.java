@@ -41,6 +41,9 @@ public class AdicionarTarefaSceneUI implements Initializable {
 
     @FXML
     private void cancelarAction(ActionEvent event) {
+        txtTarefa.clear();
+        cmbPrioridade.getSelectionModel().clearSelection();
+        cmbPrioridade.getScene().getWindow().hide();
     }
 
     @Override

@@ -3,6 +3,7 @@ package org.upskill.listatarefas.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Tarefa implements Comparable<Tarefa>, Serializable {
 
@@ -99,4 +100,32 @@ public class Tarefa implements Comparable<Tarefa>, Serializable {
         throw new RuntimeException("Dados Inválidos do Contacto");
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tarefa other = (Tarefa) obj;
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.instante, other.instante)) {
+            return false;
+        }
+        return this.prioridade == other.prioridade;
+    }
+
+    
 }
