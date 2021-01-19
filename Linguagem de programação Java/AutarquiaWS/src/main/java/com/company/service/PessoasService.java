@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.company.service;
-
 import com.company.repo.Dados;
 import com.company.dto.ListaPessoaDTO;
 import com.company.dto.Mapper;
