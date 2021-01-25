@@ -7,6 +7,7 @@ package com.company.model;
 
 import com.company.exception.FormaInvalidaException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,9 +23,11 @@ public class Terreno implements Serializable {
 
     private int numero;
     private Forma forma;
+    private ArrayList<Pessoa> donos;
 
     public Terreno(int numero, String forma) {
         this.numero = numero;
+        this.donos = new ArrayList<>();
         if (forma.equalsIgnoreCase("Circular")) {
             this.forma = Forma.CIRCULAR;
         } else if (forma.equalsIgnoreCase("Retangular")) {
@@ -64,6 +67,16 @@ public class Terreno implements Serializable {
         }
     }
 
+    public ArrayList<Pessoa> getDonos() {
+        return donos;
+    }
+
+    public void setDonos(ArrayList<Pessoa> donos) {
+        this.donos = donos;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -93,4 +106,7 @@ public class Terreno implements Serializable {
         return "Terreno{" + "number=" + numero + ", shape=" + forma + '}';
     }
 
+    public void addNewDono(Pessoa dono){
+        donos.add(dono);
+    }
 }

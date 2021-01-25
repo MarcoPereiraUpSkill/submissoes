@@ -431,4 +431,28 @@ public class Autarquia implements Serializable {
             throw new RuntimeException("Erro ao eliminar terreno!");
         }
     }
+
+    public void addDono(String freguesia, int terreno, Pessoa pessoa) {
+        boolean freguesiaEncontrada = false;
+        boolean terrenoEncontrado = false;
+        for(Freguesia f: freguesias){
+            if(f.getNome().equalsIgnoreCase(freguesia)){
+                freguesiaEncontrada = true;
+                for(Terreno t: f.getTerrenos()){
+                    if(t.getNumero() == terreno){
+                        terrenoEncontrado = true;
+                        t.addNewDono(pessoa);
+                    }
+                }
+            }
+        }
+        
+        if(!freguesiaEncontrada){
+            throw new FreguesiaDuplicadaException("Freguesia não encontrada!");
+        }
+        
+        if(!terrenoEncontrado){
+            throw new TerrenoInvalidoException("Terreno não encontrado!");
+        }
+    }
 }
