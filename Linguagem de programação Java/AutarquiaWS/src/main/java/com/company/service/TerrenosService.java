@@ -5,7 +5,7 @@
  */
 package com.company.service;
 
-import com.company.dto.ListaFreguesiaDTO;
+import com.company.dto.FreguesiaDTO;
 import com.company.dto.ListaTerrenoDTO;
 import com.company.dto.Mapper;
 import com.company.dto.TerrenoDTO;
@@ -40,12 +40,29 @@ public class TerrenosService {
         listaTerrenoDTO = Mapper.listTerreno2TerrenoDTO(terrenos);
         return listaTerrenoDTO;
     }
-    
-    public static TerrenoDTO getTerreno(String freguesia, int terreno){
+
+    public static TerrenoDTO getTerreno(String freguesia, int terreno) {
         TerrenoDTO terrenoDTO = null;
         Autarquia autarquia = Dados.carregarDados();
         Terreno t = autarquia.getTerreno(freguesia, terreno);
         terrenoDTO = Mapper.terreno2TerrenoDTO(t);
         return terrenoDTO;
+    }
+
+    public static void updateTerreno(String nome, TerrenoDTO terrenoDTO) {
+        Terreno terreno = Mapper.terrenoDTO2Terreno(terrenoDTO);
+        if (terreno != null) {
+            Autarquia autarquia = Dados.carregarDados();
+            autarquia.updateTerreno(nome, terreno);
+            Dados.guardarDados(autarquia);
+        } else {
+            throw new ConversaoException("FreguesiaDTO");
+        }
+    }
+
+    public static void deleteTerreno(String nome, int numero) {
+        Autarquia autarquia = Dados.carregarDados();
+        autarquia.removeTerreno(nome, numero);
+        Dados.guardarDados(autarquia);
     }
 }

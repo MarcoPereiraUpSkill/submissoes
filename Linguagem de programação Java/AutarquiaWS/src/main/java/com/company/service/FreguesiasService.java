@@ -8,11 +8,9 @@ package com.company.service;
 import com.company.dto.FreguesiaDTO;
 import com.company.dto.ListaFreguesiaDTO;
 import com.company.dto.Mapper;
-import com.company.dto.PessoaDTO;
 import com.company.exception.ConversaoException;
 import com.company.model.Autarquia;
 import com.company.model.Freguesia;
-import com.company.model.Pessoa;
 import com.company.repo.Dados;
 import java.util.ArrayList;
 

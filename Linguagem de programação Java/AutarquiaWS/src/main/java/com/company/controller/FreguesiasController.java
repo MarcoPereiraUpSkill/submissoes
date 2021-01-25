@@ -9,10 +9,9 @@ import com.company.dto.ErroDTO;
 import com.company.dto.FreguesiaDTO;
 import com.company.dto.ListaFreguesiaDTO;
 import com.company.dto.ListaTerrenoDTO;
-import com.company.dto.PessoaDTO;
 import com.company.dto.TerrenoDTO;
+import com.company.exception.NumeroTerrenoInvalidoException;
 import com.company.service.FreguesiasService;
-import com.company.service.PessoasService;
 import com.company.service.TerrenosService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -141,6 +140,31 @@ public class FreguesiasController {
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
+        }
+    }
+
+    @RequestMapping(value = "/freguesias/{nome}/terrenos/{terreno}",
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_XML_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<Object> updateTerrenoFreguesia(@PathVariable("nome") String nome, @RequestBody TerrenoDTO terrenoDTO) {
+        try {
+            TerrenosService.updateTerreno(nome, terrenoDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
+        }
+    }
+
+    @RequestMapping(value = "/freguesias/{nome}/terrenos/{terreno}",
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<Object> deleteTerrenoFreguesia(@PathVariable("nome") String nome, @PathVariable("terreno") int numero) {
+        try {
+            TerrenosService.deleteTerreno(nome, numero);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new ErroDTO(e), HttpStatus.CONFLICT);
         }

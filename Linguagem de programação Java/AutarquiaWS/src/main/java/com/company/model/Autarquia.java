@@ -294,18 +294,18 @@ public class Autarquia implements Serializable {
     public ArrayList<Terreno> getTerrenos(String freguesia) {
         boolean freguesiaEncontrada = false;
         ArrayList<Terreno> lista = new ArrayList<>();
-        
-        for(Freguesia f: freguesias){
-            if(f.getNome().equalsIgnoreCase(freguesia)){
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(freguesia)) {
                 freguesiaEncontrada = true;
                 lista = f.getTerrenos();
             }
         }
-        
-        if(!freguesiaEncontrada){
+
+        if (!freguesiaEncontrada) {
             throw new FreguesiaInvalidaException("Freguesia não existente!");
         }
-        
+
         return lista;
     }
 
@@ -339,33 +339,96 @@ public class Autarquia implements Serializable {
         }
 
     }
-    
-    public Terreno getTerreno(String freguesia, int terreno){
+
+    public Terreno getTerreno(String freguesia, int terreno) {
         boolean fregEncontrada = false;
         boolean terrEncontrado = false;
-        
+
         Terreno terr = null;
-        
-        for(Freguesia f: freguesias){
-            if(f.getNome().equalsIgnoreCase(freguesia)){
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(freguesia)) {
                 fregEncontrada = true;
-                for(Terreno t: f.getTerrenos()){
-                    if(t.getNumero() == terreno){
+                for (Terreno t : f.getTerrenos()) {
+                    if (t.getNumero() == terreno) {
                         terrEncontrado = true;
                         terr = t;
                     }
                 }
             }
         }
-        
-        if(!fregEncontrada){
+
+        if (!fregEncontrada) {
             throw new FreguesiaInvalidaException("Freguesia não existe!");
         }
+
+        if (!terrEncontrado) {
+            throw new TerrenoInvalidoException("Terreno não encontrado!");
+        }
+
+        return terr;
+    }
+
+    public void updateTerreno(String nome, Terreno terreno) {
+        boolean updated = false;
+        boolean freguesiaEncontrada = false;
+        boolean terrenoEncontrado = false;
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                freguesiaEncontrada = true;
+                for (Terreno t : f.getTerrenos()) {
+                    if (t.getNumero() == terreno.getNumero()) {
+                        terrenoEncontrado = true;
+                        t.setNumero(terreno.getNumero());
+                        t.setForma(terreno.getForma().name());
+                        updated = true;
+                    }
+                }
+            }
+        }
+
+        if (!freguesiaEncontrada) {
+            throw new FreguesiaInvalidaException("Freguesia não encontrada!");
+        }
+
+        if (!terrenoEncontrado) {
+            throw new TerrenoInvalidoException("Terreno não encontrado");
+        }
+
+        if (!updated) {
+            throw new RuntimeException("Erro ao atualizar");
+        }
+    }
+
+    public void removeTerreno(String nome, int numero) {
+        boolean removed = false;
+        boolean freguesiaEncontrada = false;
+        boolean terrenoEncontrado = false;
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                freguesiaEncontrada = true;
+                for(Terreno t: f.getTerrenos()){
+                    if(t.getNumero() == numero){
+                        terrenoEncontrado = true;
+                        f.getTerrenos().remove(t);
+                        removed = true;
+                    }
+                }
+            }
+        }
+
+        if(!freguesiaEncontrada){
+            throw new FreguesiaInvalidaException("Freguesia não encontrada!");
+        }
         
-        if(!terrEncontrado){
+        if(!terrenoEncontrado){
             throw new TerrenoInvalidoException("Terreno não encontrado!");
         }
         
-        return terr;
+        if(!removed){
+            throw new RuntimeException("Erro ao eliminar terreno!");
+        }
     }
 }
