@@ -108,5 +108,7 @@ public class Terreno implements Serializable {
 
     public void addNewDono(Pessoa dono){
         donos.add(dono);
+        
+        System.out.println("Added dono: " + dono.toString());
     }
 }

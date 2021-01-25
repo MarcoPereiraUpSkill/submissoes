@@ -5,6 +5,7 @@
  */
 package com.company.model;
 
+import com.company.exception.DonoDuplicadoException;
 import com.company.exception.ElementoNaoExistenteException;
 import com.company.exception.FreguesiaDuplicadaException;
 import com.company.exception.FreguesiaInvalidaException;
@@ -409,8 +410,8 @@ public class Autarquia implements Serializable {
         for (Freguesia f : freguesias) {
             if (f.getNome().equalsIgnoreCase(nome)) {
                 freguesiaEncontrada = true;
-                for(Terreno t: f.getTerrenos()){
-                    if(t.getNumero() == numero){
+                for (Terreno t : f.getTerrenos()) {
+                    if (t.getNumero() == numero) {
                         terrenoEncontrado = true;
                         f.getTerrenos().remove(t);
                         removed = true;
@@ -419,15 +420,15 @@ public class Autarquia implements Serializable {
             }
         }
 
-        if(!freguesiaEncontrada){
+        if (!freguesiaEncontrada) {
             throw new FreguesiaInvalidaException("Freguesia não encontrada!");
         }
-        
-        if(!terrenoEncontrado){
+
+        if (!terrenoEncontrado) {
             throw new TerrenoInvalidoException("Terreno não encontrado!");
         }
-        
-        if(!removed){
+
+        if (!removed) {
             throw new RuntimeException("Erro ao eliminar terreno!");
         }
     }
@@ -435,24 +436,63 @@ public class Autarquia implements Serializable {
     public void addDono(String freguesia, int terreno, Pessoa pessoa) {
         boolean freguesiaEncontrada = false;
         boolean terrenoEncontrado = false;
-        for(Freguesia f: freguesias){
-            if(f.getNome().equalsIgnoreCase(freguesia)){
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(freguesia)) {
                 freguesiaEncontrada = true;
-                for(Terreno t: f.getTerrenos()){
-                    if(t.getNumero() == terreno){
+                for (Terreno t : f.getTerrenos()) {
+                    if (t.getNumero() == terreno) {
+                        terrenoEncontrado = true;
+                        for (Pessoa d : t.getDonos()) {
+                            if (d.getNif() == pessoa.getNif()) {
+                                throw new DonoDuplicadoException("Dono já existe!");
+                            }
+                        }
+
                         terrenoEncontrado = true;
                         t.addNewDono(pessoa);
+
                     }
                 }
             }
         }
-        
-        if(!freguesiaEncontrada){
+
+        if (!freguesiaEncontrada) {
             throw new FreguesiaDuplicadaException("Freguesia não encontrada!");
         }
-        
-        if(!terrenoEncontrado){
+
+        if (!terrenoEncontrado) {
             throw new TerrenoInvalidoException("Terreno não encontrado!");
         }
+    }
+
+    public ArrayList<Pessoa> getDonos(String freguesia, int terreno) {
+        boolean freguesiaEncontrada = false;
+        boolean terrenoEncontrado = false;
+
+        ArrayList<Pessoa> donos = null;
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(freguesia)) {
+                freguesiaEncontrada = true;
+                for (Terreno t : f.getTerrenos()) {
+                    if (t.getNumero() == terreno) {
+                        terrenoEncontrado = true;
+                        System.out.println("########" + t.getDonos());
+                        donos = t.getDonos();
+                    }
+                }
+            }
+        }
+
+        if (!freguesiaEncontrada) {
+            throw new FreguesiaInvalidaException("Freguesia não encontrada!");
+        }
+
+        if (!terrenoEncontrado) {
+            throw new TerrenoInvalidoException("Terreno não encontrado");
+        }
+
+        return donos;
     }
 }
