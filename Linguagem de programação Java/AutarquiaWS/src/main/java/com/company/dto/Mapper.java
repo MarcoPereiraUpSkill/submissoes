@@ -6,8 +6,10 @@
 package com.company.dto;
 
 import com.company.model.Data;
+import com.company.model.Freguesia;
 import com.company.model.Funcionario;
 import com.company.model.Pessoa;
+import com.company.model.Terreno;
 import java.util.ArrayList;
 
 public class Mapper {
@@ -92,5 +94,62 @@ public class Mapper {
         ListaFuncionarioDTO listaFuncionarioDTO = new ListaFuncionarioDTO();
         listaFuncionarioDTO.setFuncionarios(funcionariosDTO);
         return listaFuncionarioDTO;
+    }
+
+    public static FreguesiaDTO freguesia2FreguesiaDTO(Freguesia freguesia) throws NullPointerException {
+        FreguesiaDTO freguesiaDTO = new FreguesiaDTO();
+        freguesiaDTO.setNome(freguesia.getNome());
+        return freguesiaDTO;
+    }
+
+    public static ListaFreguesiaDTO listFreguesia2FreguesiaDTO(ArrayList<Freguesia> freguesias) throws NullPointerException {
+        ArrayList<FreguesiaDTO> freguesiasDTO = new ArrayList<>();
+        for (Freguesia freguesia : freguesias) {
+            try {
+                FreguesiaDTO freguesiaDTO = freguesia2FreguesiaDTO(freguesia);
+                freguesiasDTO.add(freguesiaDTO);
+            } catch (NullPointerException e) {
+                //does nothing. Actually, nothing is added to arraylist
+            }
+        }
+
+        ListaFreguesiaDTO listaFreguesiaDTO = new ListaFreguesiaDTO();
+        listaFreguesiaDTO.setFreguesias(freguesiasDTO);
+        return listaFreguesiaDTO;
+    }
+
+    public static Freguesia freguesiaDTO2Freguesia(FreguesiaDTO freguesiaDTO) throws NullPointerException {
+        Freguesia freguesia = null;
+        freguesia = new Freguesia(freguesiaDTO.getNome());
+        return freguesia;
+    }
+
+    public static Terreno terrenoDTO2Terreno(TerrenoDTO terrenoDTO) throws NullPointerException {
+        Terreno terreno = null;
+        terreno = new Terreno(terrenoDTO.getNumero(), terrenoDTO.getForma());
+        return terreno;
+    }
+
+    public static ListaTerrenoDTO listTerreno2TerrenoDTO(ArrayList<Terreno> terrenos) throws NullPointerException {
+        ArrayList<TerrenoDTO> terrenosDTO = new ArrayList<>();
+        for (Terreno terreno : terrenos) {
+            try {
+                TerrenoDTO terrenoDTO = terreno2TerrenoDTO(terreno);
+                terrenosDTO.add(terrenoDTO);
+            } catch (NullPointerException e) {
+                //does nothing. Actually, nothing is added to arraylist
+            }
+        }
+
+        ListaTerrenoDTO listaTerrenoDTO = new ListaTerrenoDTO();
+        listaTerrenoDTO.setTerrenos(terrenosDTO);
+        return listaTerrenoDTO;
+    }
+
+    public static TerrenoDTO terreno2TerrenoDTO(Terreno terreno) throws NullPointerException {
+        TerrenoDTO terrenoDTO = new TerrenoDTO();
+        terrenoDTO.setForma(terreno.getForma().name());
+        terrenoDTO.setNumero(terreno.getNumero());
+        return terrenoDTO;
     }
 }

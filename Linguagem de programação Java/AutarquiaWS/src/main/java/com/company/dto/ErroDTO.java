@@ -16,7 +16,7 @@ public class ErroDTO {
 
     public ErroDTO(Exception e) {
         mensagemErro = e.getMessage();
-// e.printStackTrace();
+        e.printStackTrace();
     }
 
     public ErroDTO() {

@@ -9,7 +9,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+// Determinar a ordem da serialização das propriedades
 @JsonPropertyOrder({"dia", "mes", "ano"})
+// Determinar nome do root element
 @JacksonXmlRootElement(localName = "data")
 public class DataDTO {
 
@@ -20,6 +22,7 @@ public class DataDTO {
     @JacksonXmlProperty(localName = "ano")
     private int ano;
 
+    //Construtor vazio
     public DataDTO() {
     }
 

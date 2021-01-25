@@ -6,19 +6,26 @@
 package com.company.model;
 
 import com.company.exception.ElementoNaoExistenteException;
+import com.company.exception.FreguesiaDuplicadaException;
+import com.company.exception.FreguesiaInvalidaException;
 import com.company.exception.NifDuplicadoException;
 import com.company.exception.NumeroFuncionarioDuplicadoException;
+import com.company.exception.TerrenoDuplicadoException;
+import com.company.exception.TerrenoInvalidoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Autarquia implements Serializable {
 
+    // static final long serialVersionUID = 5069974398830319675L;
     private String nome;
     private ArrayList<Pessoa> pessoas;
+    private ArrayList<Freguesia> freguesias;
 
     public Autarquia(String nome) {
         this.nome = nome;
-        this.pessoas = new ArrayList<Pessoa>();
+        this.pessoas = new ArrayList<>();
+        this.freguesias = new ArrayList<>();
     }
 
     public ArrayList<Pessoa> getAllPessoas() {
@@ -196,5 +203,169 @@ public class Autarquia implements Serializable {
             }
         }
         return null;
+    }
+
+    ///////////////////////////////////////////////
+    // Freguesias
+    public ArrayList<Freguesia> getFreguesias() {
+        Freguesia freguesia;
+        ArrayList<Freguesia> lista = new ArrayList<>();
+        for (int i = 0; i < this.freguesias.size(); i++) {
+            freguesia = this.freguesias.get(i);
+            Freguesia copia = new Freguesia(freguesia);
+            lista.add(copia);
+        }
+        return lista;
+    }
+
+    public void addFreguesia(Freguesia freguesia) throws FreguesiaDuplicadaException {
+        boolean duplicada = false;
+
+        System.out.println(this.freguesias);
+
+        if (this.freguesias.size() > 0) {
+            for (Freguesia f : freguesias) {
+                if (f.getNome().equalsIgnoreCase(freguesia.getNome())) {
+                    duplicada = true;
+                    throw new FreguesiaDuplicadaException("A freguesia já existe!");
+                }
+            }
+        }
+
+        if (!duplicada) {
+            freguesias.add(freguesia);
+        }
+    }
+
+    public Freguesia getFreguesia(String nome) {
+        boolean existente = false;
+        Freguesia freguesia = null;
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                existente = true;
+                freguesia = f;
+            }
+        }
+
+        if (!existente) {
+            throw new FreguesiaInvalidaException("Freguesia não existe!");
+        } else {
+            return freguesia;
+        }
+    }
+
+    public void removeFreguesia(String nome) {
+        boolean existente = false;
+        Freguesia fRemove = null;
+
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                existente = true;
+                fRemove = f;
+            }
+        }
+
+        if (!existente) {
+            throw new FreguesiaInvalidaException("Freguesia não existe!");
+        } else {
+            this.freguesias.remove(fRemove);
+        }
+    }
+
+    public void updateFreguesia(String nome, Freguesia freguesia) {
+        boolean updated = false;
+
+        System.out.println("########" + nome);
+        for (Freguesia f : freguesias) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
+                f.setNome(freguesia.getNome());
+                updated = true;
+            }
+        }
+
+        if (!updated) {
+            throw new FreguesiaInvalidaException("Freguesia não existe");
+        }
+    }
+
+    ///////////////////////////////////////////////
+    // Terrenos
+    public ArrayList<Terreno> getTerrenos(String freguesia) {
+        boolean freguesiaEncontrada = false;
+        ArrayList<Terreno> lista = new ArrayList<>();
+        
+        for(Freguesia f: freguesias){
+            if(f.getNome().equalsIgnoreCase(freguesia)){
+                freguesiaEncontrada = true;
+                lista = f.getTerrenos();
+            }
+        }
+        
+        if(!freguesiaEncontrada){
+            throw new FreguesiaInvalidaException("Freguesia não existente!");
+        }
+        
+        return lista;
+    }
+
+    public void addTerreno(Terreno terreno, String freguesia) throws TerrenoDuplicadoException {
+        boolean duplicada = false;
+        boolean fregEncontrada = false;
+        Freguesia fregAdd = null;
+
+        if (this.freguesias.size() > 0) {
+            for (Freguesia f : freguesias) {
+                if (f.getNome().equalsIgnoreCase(freguesia)) {
+                    fregEncontrada = true;
+                    fregAdd = f;
+                    for (Terreno t : f.getTerrenos()) {
+                        if (t.getNumero() == terreno.getNumero()) {
+                            duplicada = true;
+                            throw new TerrenoDuplicadoException("O terreno já existe nessa freguesia!");
+                        }
+                    }
+
+                }
+            }
+        }
+
+        if (!fregEncontrada) {
+            throw new FreguesiaInvalidaException("Freguesia não encontrada!");
+        } else {
+            if (!duplicada) {
+                fregAdd.addTerreno(terreno);
+            }
+        }
+
+    }
+    
+    public Terreno getTerreno(String freguesia, int terreno){
+        boolean fregEncontrada = false;
+        boolean terrEncontrado = false;
+        
+        Terreno terr = null;
+        
+        for(Freguesia f: freguesias){
+            if(f.getNome().equalsIgnoreCase(freguesia)){
+                fregEncontrada = true;
+                for(Terreno t: f.getTerrenos()){
+                    if(t.getNumero() == terreno){
+                        terrEncontrado = true;
+                        terr = t;
+                    }
+                }
+            }
+        }
+        
+        if(!fregEncontrada){
+            throw new FreguesiaInvalidaException("Freguesia não existe!");
+        }
+        
+        if(!terrEncontrado){
+            throw new TerrenoInvalidoException("Terreno não encontrado!");
+        }
+        
+        return terr;
     }
 }
